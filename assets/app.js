@@ -44,6 +44,20 @@ function demoAction(label) {
   return action;
 }
 
+function renderResearch(items) {
+  const entries = items.map((direction) => {
+    const entry = document.createElement("article");
+    entry.className = "research-feature";
+    entry.append(
+      textElement("p", "micro-label", direction.kicker),
+      textElement("h4", "", direction.title),
+      textElement("p", "", direction.description),
+    );
+    return entry;
+  });
+  byId("research-list").replaceChildren(...entries);
+}
+
 function renderPapers(items) {
   const rows = items.map((paper) => {
     const row = document.createElement("article");
@@ -104,9 +118,7 @@ function applyLocale(locale, { persist = true } = {}) {
     setText(`${key}-number`, page.sections[key].number);
     setText(`${key}-section-title`, page.sections[key].title);
   }
-  setText("research-kicker", page.research.kicker);
-  setText("research-title", page.research.title);
-  setText("research-description", page.research.description);
+  renderResearch(page.research);
   renderPapers(page.papers);
   renderProjects(page.projects);
   renderSimpleList("interest-list", page.interests);

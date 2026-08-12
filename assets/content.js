@@ -1,29 +1,10 @@
 const common = {
   papers: [
-    {
-      year: "2026",
-      title: "SciTrace: Citation-Aware Reasoning for Scientific Language Models",
-      authors: "Luxuan Chen, Arman Cohan, et al.",
-      venue: "ICLR 2026",
-      href: null,
-      demo: true,
-    },
-    {
-      year: "2025",
-      title: "When Retrieval Misleads: Evaluating Evidence Use in Language Model Agents",
-      authors: "Luxuan Chen, Yilun Zhao, et al.",
-      venue: "NeurIPS 2025",
-      href: null,
-      demo: true,
-    },
-    {
-      year: "2024",
-      title: "Beyond Answers: Auditable Scientific Reasoning with Foundation Models",
-      authors: "Luxuan Chen, et al.",
-      venue: "ACL 2024",
-      href: null,
-      demo: true,
-    },
+    { year: "2026", title: "Latent Proofs: Causal Tracing of Mathematical Reasoning in Large Language Models", authors: "Luxuan Chen et al.", venue: "NeurIPS 2026", href: null, demo: true },
+    { year: "2026", title: "Physicist-in-the-Loop: Autonomous Agents for Hypothesis-Driven Theoretical Research", authors: "Luxuan Chen et al.", venue: "ICML 2026", href: null, demo: true },
+    { year: "2025", title: "GaugeFlow: Symmetry-Preserving Generative Models for Lattice Field Theory", authors: "Luxuan Chen et al.", venue: "Physical Review Letters, 2025", href: null, demo: true },
+    { year: "2025", title: "Foundation Neural Quantum States Across Hamiltonian Families", authors: "Luxuan Chen et al.", venue: "Nature Machine Intelligence, 2025", href: null, demo: true },
+    { year: "2025", title: "From Language to Lagrangians: Neuro-Symbolic Discovery of Effective Field Theories", authors: "Luxuan Chen et al.", venue: "ICLR 2025", href: null, demo: true },
   ],
   projects: [
     { title: "Creator Evidence Wiki", href: null, demo: true },
@@ -36,8 +17,8 @@ const common = {
 export const content = {
   en: {
     meta: {
-      title: "Luxuan Chen | AI Research & Independent Work",
-      description: "Luxuan Chen's bilingual personal homepage for research, publications, and software projects. Demo content is clearly disclosed.",
+      title: "Luxuan Chen | AI Scientist & Theoretical Physicist",
+      description: "Luxuan Chen's bilingual personal homepage for scientific AI, theoretical physics, publications, and independent projects. Fictional demo content is clearly disclosed.",
     },
     languageLabel: "Choose language",
     skipLabel: "Skip to work",
@@ -45,14 +26,14 @@ export const content = {
       name: "Luxuan Chen",
       initials: "LC",
       portraitAlt: "Monogram portrait placeholder for Luxuan Chen",
-      role: "AI Scholar & PhD Candidate",
-      affiliation: "Yale University",
-      department: "Department of Computer Science",
-      location: "New Haven, Connecticut",
-      bio: "I study how language models reason with evidence, collaborate with people, and accelerate scientific discovery.",
-      focus: ["Language Models", "AI for Science"],
+      role: "AI Scientist & Theoretical Physicist",
+      affiliation: "PhD Researcher · Yale University",
+      department: "Independent Builder · Scientific AI Researcher",
+      location: "Based between New Haven & Chiang Mai 🇺🇸 🇹🇭",
+      bio: "I build AI systems that can reason about, verify, and ultimately discover scientific principles. My work sits at the intersection of foundation models, quantum many-body physics, and high-energy theory, centered on one question: can machines derive testable knowledge from first principles and complex evidence? Alongside research, I build independent tools for scientists and explore a more open, location-independent way of doing ambitious work.",
+      focus: ["Foundation Models", "Quantum Matter", "High-Energy Physics"],
       nowLabel: "Now",
-      now: "Building reliable AI agents for scientific work. Thinking about evidence, uncertainty, and human-AI collaboration.",
+      now: "Building AI scientists that can read papers, operate symbolic tools, run numerical experiments, and audit their own reasoning.",
     },
     contacts: [
       { label: "GitHub", href: "https://github.com/Redawn7" },
@@ -61,9 +42,9 @@ export const content = {
       { label: "CV", href: null },
     ],
     page: {
-      eyebrow: "Selected, not exhaustive",
+      eyebrow: "Research at the edge of intelligence & matter",
       title: "Work & Exploration",
-      intro: "Research, writing, and tools for making intelligent systems more reliable and more useful to people.",
+      intro: "AI for fundamental physics—from interpretable reasoning and autonomous discovery to quantum matter and lattice field theory.",
     },
     sections: {
       research: { number: "01", title: "Research" },
@@ -71,18 +52,26 @@ export const content = {
       projects: { number: "03", title: "Projects" },
       interests: { number: "04", title: "Beyond Work" },
     },
-    research: {
-      kicker: "Current focus",
-      title: "Trustworthy reasoning for scientific AI",
-      description: "My research asks how foundation models can reason over complex evidence, express uncertainty, and remain useful when knowledge is incomplete, especially in scientific and research-intensive settings.",
-    },
+    research: [
+      {
+        kicker: "Language models",
+        title: "Verifiable Scientific Reasoning and Mechanistic Interpretability",
+        description: "I study how language models form multi-step reasoning, mathematical abstractions, and causal representations. Using causal interventions, circuit analysis, and formal verification, I work to distinguish faithful reasoning from plausible narration.",
+      },
+      {
+        kicker: "AI for physics",
+        title: "Autonomous AI Scientists for Fundamental Physics",
+        description: "I build research agents that read literature, generate hypotheses, call symbolic and numerical tools, analyze evidence, and revise research plans—with a physicist kept firmly in the loop.",
+      },
+      {
+        kicker: "Quantum matter",
+        title: "Foundation Models for Quantum Matter and Lattice Field Theory",
+        description: "I use neural quantum states, symmetry-preserving generative models, and differentiable simulators to study wave functions, quantum phase transitions, and non-perturbative dynamics across families of physical systems.",
+      },
+    ],
     papers: common.papers.map((paper, index) => ({
       ...paper,
-      topic: [
-        "Scientific reasoning & evidence attribution",
-        "Retrieval, evaluation & uncertainty",
-        "AI for Science & interpretable reasoning",
-      ][index],
+      topic: ["Mechanistic interpretability · mathematical reasoning", "Autonomous agents · theoretical physics", "Generative models · gauge symmetry", "Neural quantum states · many-body physics", "Neuro-symbolic AI · high-energy theory"][index],
       action: "Demo record",
     })),
     projects: common.projects.map((project, index) => ({
@@ -98,28 +87,28 @@ export const content = {
     })),
     interests: ["Photography", "Long walks", "Reading", "Independent building", "Coffee & conversations"],
     disclosureLabel: "Demo notice",
-    disclosure: "All biographical details, affiliations, publication records, authorship, venues, and selected projects shown on this page are fictional placeholders created solely for interface testing. They do not represent verified academic or professional claims.",
+    disclosure: "All biographical details, affiliations, research directions, publication records, authorship, venues, and selected projects shown on this page are fictional placeholders created solely for interface testing. They do not represent verified academic or professional claims.",
     footer: "Designed as a quiet index of ideas and work.",
   },
   zh: {
     meta: {
-      title: "Luxuan Chen｜人工智能研究与独立创作",
-      description: "Luxuan Chen 的中英双语个人主页，展示研究方向、论文与开发项目。页面中的测试内容均有明确说明。",
+      title: "陆宣辰｜AI 科学家与理论物理研究者",
+      description: "陆宣辰的中英双语个人主页，展示科学智能、理论物理、论文与独立项目。页面中的虚构测试内容均有明确说明。",
     },
     languageLabel: "选择语言",
     skipLabel: "跳转到研究与项目",
     profile: {
-      name: "Luxuan Chen",
+      name: "陆宣辰",
       initials: "LC",
-      portraitAlt: "Luxuan Chen 的字母头像占位图",
-      role: "人工智能学者、博士研究生",
-      affiliation: "耶鲁大学",
-      department: "计算机科学系",
-      location: "美国康涅狄格州纽黑文",
-      bio: "我关注语言模型如何基于证据推理、如何与人协作，以及如何推动科学发现。",
-      focus: ["语言模型", "AI for Science"],
+      portraitAlt: "陆宣辰的字母头像占位图",
+      role: "AI 科学家、理论物理研究者",
+      affiliation: "耶鲁大学博士研究生",
+      department: "独立开发者 · 科学智能研究者",
+      location: "往返于纽黑文与清迈 🇺🇸 🇹🇭",
+      bio: "我研究能够理解、验证并发现科学规律的人工智能系统。我的工作横跨大语言模型、量子多体物理与高能理论，关注一个核心问题：机器能否从复杂证据和第一性原理出发，形成可检验的新知识。除了学术研究，我也持续构建面向研究者的 AI 工具，并探索更自由、跨地域的研究与创造方式。",
+      focus: ["基础模型", "量子物质", "高能物理"],
       nowLabel: "最近",
-      now: "正在构建面向科研工作的可靠 AI 智能体，也在思考证据、不确定性与人机协作。",
+      now: "正在构建能够阅读论文、操作符号工具、运行数值实验并审视自身推理的 AI Scientist。",
     },
     contacts: [
       { label: "GitHub", href: "https://github.com/Redawn7" },
@@ -128,9 +117,9 @@ export const content = {
       { label: "简历", href: null },
     ],
     page: {
-      eyebrow: "精选内容，并非全部",
+      eyebrow: "探索智能与物质的边界",
       title: "研究、论文与开发",
-      intro: "围绕智能系统的可靠性与实用性，持续进行研究、写作与工具开发。",
+      intro: "面向基础物理的人工智能：从可解释推理与自主发现，到量子物质与格点场论。",
     },
     sections: {
       research: { number: "01", title: "研究方向" },
@@ -138,14 +127,26 @@ export const content = {
       projects: { number: "03", title: "开发项目" },
       interests: { number: "04", title: "工作之外" },
     },
-    research: {
-      kicker: "当前方向",
-      title: "面向科学智能的可信推理",
-      description: "我的研究关注基础模型如何理解复杂证据、表达不确定性，并在知识并不完整的情况下持续为人提供帮助，尤其是在科学研究与知识密集型场景中。",
-    },
+    research: [
+      {
+        kicker: "大语言模型",
+        title: "可验证的科学推理与机制可解释性",
+        description: "研究语言模型如何形成多步推理、数学抽象与因果表征，并结合因果干预、神经回路分析与形式化验证，区分忠实推理与看似合理的叙述。",
+      },
+      {
+        kicker: "AI for Physics",
+        title: "面向基础物理的自主科研智能体",
+        description: "构建能够阅读文献、生成假设、调用符号与数值工具、分析证据并迭代研究计划的科研智能体，同时让物理学家始终处于关键决策回路中。",
+      },
+      {
+        kicker: "量子物质",
+        title: "量子多体与格点场论基础模型",
+        description: "运用神经量子态、保持对称性的生成模型与可微分模拟器，研究跨物理系统族的波函数、量子相变及非微扰动力学。",
+      },
+    ],
     papers: common.papers.map((paper, index) => ({
       ...paper,
-      topic: ["科学推理与证据归因", "检索、评测与不确定性", "AI for Science 与可解释推理"][index],
+      topic: ["机制可解释性 · 数学推理", "自主智能体 · 理论物理", "生成模型 · 规范对称性", "神经量子态 · 多体物理", "神经符号 AI · 高能理论"][index],
       action: "演示条目",
     })),
     projects: common.projects.map((project, index) => ({
@@ -161,7 +162,7 @@ export const content = {
     })),
     interests: ["摄影", "散步", "阅读", "独立开发", "咖啡与交流"],
     disclosureLabel: "测试说明",
-    disclosure: "本页面展示的个人经历、院校信息、论文记录、作者署名、会议名称及部分项目均为界面测试而创建的虚构占位数据，不代表经过核实的学术或职业信息。",
+    disclosure: "本页面展示的个人身份、院校信息、研究方向、论文记录、作者署名、发表场所及部分项目均为界面测试而创建的虚构占位数据，不代表经过核实的学术或职业信息。",
     footer: "一份关于想法与工作的安静索引。",
   },
 };

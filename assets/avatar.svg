@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-labelledby="title description">
+  <title id="title">LC monogram portrait placeholder</title>
+  <desc id="description">A quiet blue-gray monogram used until a real portrait is supplied.</desc>
+  <rect width="480" height="600" fill="#E7E8E2"/>
+  <circle cx="240" cy="213" r="82" fill="#C9D3D4"/>
+  <path d="M93 528c18-124 72-186 147-186s129 62 147 186" fill="#B9C6C9"/>
+  <path d="M94 62h292M94 538h292" stroke="#315C73" stroke-width="2" opacity=".55"/>
+  <text x="240" y="575" text-anchor="middle" fill="#214457" font-family="Avenir Next, Avenir, Helvetica, Arial, sans-serif" font-size="21" font-weight="600" letter-spacing="8">LC</text>
+</svg>

@@ -35,7 +35,8 @@ test("visual contract includes responsive, focus, and reduced-motion rules", asy
   assert.match(css, /@media \(min-width: 70rem\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /min-height:\s*44px/);
-  assert.match(css, /position:\s*sticky/);
+  assert.match(css, /\.profile-rail\s*\{[^}]*position:\s*fixed/s);
+  assert.match(css, /height:\s*100dvh/);
 });
 
 test("application renders demo actions without navigable paper or project links", async () => {

@@ -52,6 +52,11 @@ test("the mock profile uses the approved interdisciplinary identity", () => {
   }
 });
 
+test("the profile biographies stay concise enough for a fixed desktop rail", () => {
+  assert.ok(content.en.profile.bio.length <= 240);
+  assert.ok(content.zh.profile.bio.length <= 110);
+});
+
 test("fictional papers use generic authorship and the approved venues", () => {
   const expectedVenues = ["NeurIPS 2026", "ICML 2026", "Physical Review Letters, 2025", "Nature Machine Intelligence, 2025", "ICLR 2025"];
   assert.deepEqual(content.en.papers.map((paper) => paper.venue), expectedVenues);

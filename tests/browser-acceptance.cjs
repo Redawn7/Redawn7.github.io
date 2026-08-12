@@ -32,8 +32,15 @@ mkdirSync(output, { recursive: true });
     if (!(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth))) throw new Error(`${name}: horizontal overflow`);
 
     if (name === "desktop") {
-      const position = await page.locator(".profile-inner").evaluate((element) => getComputedStyle(element).position);
-      if (position !== "sticky") throw new Error("desktop: profile rail is not sticky");
+      const rail = page.locator(".profile-rail");
+      const position = await rail.evaluate((element) => getComputedStyle(element).position);
+      if (position !== "fixed") throw new Error("desktop: profile rail is not fixed");
+      const beforeScroll = await rail.boundingBox();
+      await page.evaluate(() => window.scrollTo(0, 900));
+      const afterScroll = await rail.boundingBox();
+      if (!beforeScroll || !afterScroll || beforeScroll.y !== afterScroll.y) throw new Error("desktop: profile rail moved while scrolling");
+      if (afterScroll.height > height) throw new Error("desktop: profile rail exceeds viewport height");
+      await page.evaluate(() => window.scrollTo(0, 0));
       await page.getByRole("button", { name: "中文" }).click();
       if ((await page.locator("html").getAttribute("lang")) !== "zh-CN") throw new Error("language attribute not updated");
       if ((await page.locator("#page-title").innerText()) !== "研究、论文与开发") throw new Error("Chinese copy not rendered");

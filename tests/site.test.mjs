@@ -13,7 +13,7 @@ test("document contains the complete semantic personal homepage", async () => {
   assert.match(html, /data-language-switch/);
   assert.match(html, /<aside[^>]*class="profile-rail"/);
   assert.match(html, /<main[^>]*id="work"/);
-  for (const id of ["research", "papers", "projects", "interests", "demo-disclosure"]) {
+  for (const id of ["research", "experience", "papers", "projects", "interests", "demo-disclosure"]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
   assert.match(html, /fictional placeholders/i);

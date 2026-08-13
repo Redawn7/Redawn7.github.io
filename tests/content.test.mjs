@@ -20,11 +20,12 @@ test("Chinese and English content expose the same complete shape", () => {
     const page = content[locale];
     assert.ok(page, `missing ${locale} content`);
     for (const key of requiredProfile) assert.ok(page.profile[key], `${locale}.profile.${key}`);
-    for (const key of ["research", "papers", "projects", "interests"]) {
+    for (const key of ["research", "experience", "papers", "projects", "interests"]) {
       assert.ok(page.sections[key].title, `${locale}.sections.${key}.title`);
       assert.ok(page.sections[key].number, `${locale}.sections.${key}.number`);
     }
     assert.equal(page.research.length, 3);
+    assert.equal(page.experience.length, 3);
     assert.equal(page.papers.length, 5);
     assert.equal(page.projects.length, 4);
     assert.ok(page.interests.length >= 4);
@@ -47,7 +48,7 @@ test("the mock profile uses the approved interdisciplinary identity", () => {
     for (const direction of content[locale].research) {
       assert.ok(direction.kicker);
       assert.ok(direction.title);
-      assert.ok(direction.description.length > (locale === "zh" ? 45 : 80));
+      assert.equal("description" in direction, false);
     }
   }
 });

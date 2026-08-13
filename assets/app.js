@@ -51,11 +51,23 @@ function renderResearch(items) {
     entry.append(
       textElement("p", "micro-label", direction.kicker),
       textElement("h4", "", direction.title),
-      textElement("p", "", direction.description),
     );
     return entry;
   });
   byId("research-list").replaceChildren(...entries);
+}
+
+function renderExperience(items) {
+  const rows = items.map((item) => {
+    const row = document.createElement("article");
+    row.className = "experience-row";
+    row.append(
+      textElement("p", "record-year", item.period),
+      textElement("h4", "", item.title),
+    );
+    return row;
+  });
+  byId("experience-list").replaceChildren(...rows);
 }
 
 function renderPapers(items) {
@@ -114,11 +126,12 @@ function applyLocale(locale, { persist = true } = {}) {
   setText("page-eyebrow", page.page.eyebrow);
   setText("page-title", page.page.title);
   setText("page-intro", page.page.intro);
-  for (const key of ["research", "papers", "projects", "interests"]) {
+  for (const key of ["research", "experience", "papers", "projects", "interests"]) {
     setText(`${key}-number`, page.sections[key].number);
     setText(`${key}-section-title`, page.sections[key].title);
   }
   renderResearch(page.research);
+  renderExperience(page.experience);
   renderPapers(page.papers);
   renderProjects(page.projects);
   renderSimpleList("interest-list", page.interests);

@@ -48,26 +48,29 @@ export const content = {
     },
     sections: {
       research: { number: "01", title: "Research" },
-      papers: { number: "02", title: "Selected Papers" },
-      projects: { number: "03", title: "Projects" },
-      interests: { number: "04", title: "Beyond Work" },
+      experience: { number: "02", title: "Experience" },
+      papers: { number: "03", title: "Selected Papers" },
+      projects: { number: "04", title: "Projects" },
+      interests: { number: "05", title: "Beyond Work" },
     },
     research: [
       {
         kicker: "Language models",
         title: "Verifiable Scientific Reasoning and Mechanistic Interpretability",
-        description: "I study how language models form multi-step reasoning, mathematical abstractions, and causal representations. Using causal interventions, circuit analysis, and formal verification, I work to distinguish faithful reasoning from plausible narration.",
       },
       {
         kicker: "AI for physics",
         title: "Autonomous AI Scientists for Fundamental Physics",
-        description: "I build research agents that read literature, generate hypotheses, call symbolic and numerical tools, analyze evidence, and revise research plans—with a physicist kept firmly in the loop.",
       },
       {
         kicker: "Quantum matter",
         title: "Foundation Models for Quantum Matter and Lattice Field Theory",
-        description: "I use neural quantum states, symmetry-preserving generative models, and differentiable simulators to study wave functions, quantum phase transitions, and non-perturbative dynamics across families of physical systems.",
       },
+    ],
+    experience: [
+      { period: "2024—Present", title: "PhD Researcher, Yale University" },
+      { period: "2022—2024", title: "Research Assistant, Institute for Advanced Study" },
+      { period: "2018—2022", title: "B.Sc. in Physics & Computer Science, Tsinghua University" },
     ],
     papers: common.papers.map((paper, index) => ({
       ...paper,
@@ -123,26 +126,29 @@ export const content = {
     },
     sections: {
       research: { number: "01", title: "研究方向" },
-      papers: { number: "02", title: "精选论文" },
-      projects: { number: "03", title: "开发项目" },
-      interests: { number: "04", title: "工作之外" },
+      experience: { number: "02", title: "个人履历" },
+      papers: { number: "03", title: "精选论文" },
+      projects: { number: "04", title: "开发项目" },
+      interests: { number: "05", title: "工作之外" },
     },
     research: [
       {
         kicker: "大语言模型",
         title: "可验证的科学推理与机制可解释性",
-        description: "研究语言模型如何形成多步推理、数学抽象与因果表征，并结合因果干预、神经回路分析与形式化验证，区分忠实推理与看似合理的叙述。",
       },
       {
         kicker: "AI for Physics",
         title: "面向基础物理的自主科研智能体",
-        description: "构建能够阅读文献、生成假设、调用符号与数值工具、分析证据并迭代研究计划的科研智能体，同时让物理学家始终处于关键决策回路中。",
       },
       {
         kicker: "量子物质",
         title: "量子多体与格点场论基础模型",
-        description: "运用神经量子态、保持对称性的生成模型与可微分模拟器，研究跨物理系统族的波函数、量子相变及非微扰动力学。",
       },
+    ],
+    experience: [
+      { period: "2024—至今", title: "耶鲁大学博士研究生" },
+      { period: "2022—2024", title: "高等研究院研究助理" },
+      { period: "2018—2022", title: "清华大学物理学与计算机科学学士" },
     ],
     papers: common.papers.map((paper, index) => ({
       ...paper,

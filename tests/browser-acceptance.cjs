@@ -25,6 +25,7 @@ mkdirSync(output, { recursive: true });
 
     if ((await page.locator("#profile-name").innerText()) !== "Xuanchen Lu") throw new Error(`${name}: missing name`);
     if ((await page.locator("#research-list .research-feature").count()) !== 3) throw new Error(`${name}: wrong research count`);
+    if ((await page.locator("#experience-list .experience-row").count()) !== 3) throw new Error(`${name}: wrong experience count`);
     if ((await page.locator("#paper-list .paper-row").count()) !== 5) throw new Error(`${name}: wrong paper count`);
     if ((await page.locator("#project-list .project-entry").count()) !== 4) throw new Error(`${name}: wrong project count`);
     if ((await page.locator("[data-demo-action]").count()) !== 9) throw new Error(`${name}: unsafe demo actions`);

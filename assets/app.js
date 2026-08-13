@@ -1,5 +1,5 @@
-import { content } from "./content.js";
-import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js";
+import { content } from "./content.js?v=20260813-2";
+import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260813-2";
 
 const byId = (id) => document.getElementById(id);
 

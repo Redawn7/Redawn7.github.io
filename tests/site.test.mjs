@@ -21,8 +21,8 @@ test("document contains the complete semantic personal homepage", async () => {
 
 test("runtime assets are local and dependency-free", async () => {
   const html = await read("index.html");
-  assert.match(html, /href="\.\/assets\/styles\.css"/);
-  assert.match(html, /src="\.\/assets\/app\.js"/);
+  assert.match(html, /href="\.\/assets\/styles\.css(?:\?[^\"]+)?"/);
+  assert.match(html, /src="\.\/assets\/app\.js(?:\?[^\"]+)?"/);
   assert.doesNotMatch(html, /<script[^>]+https?:\/\//);
   assert.doesNotMatch(html, /<link[^>]+(?:fonts\.googleapis|cdn\.)/);
   await Promise.all(["assets/styles.css", "assets/app.js", "assets/avatar.svg"].map(read));

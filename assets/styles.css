@@ -261,19 +261,19 @@ main {
 }
 
 h2 {
-  max-width: 10ch;
+  max-width: none;
   margin-block-end: 1.25rem;
-  font-size: clamp(2.25rem, 7vw, 5rem);
+  font-size: clamp(2rem, 4.2vw, 4rem);
   font-weight: 600;
   letter-spacing: -0.055em;
-  line-height: 0.95;
+  line-height: 1;
 }
 
 .page-intro {
   max-width: 52ch;
   margin: 0;
   color: var(--graphite-muted);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
 }
 
 .language-switch {
@@ -350,7 +350,7 @@ h2 {
 .research-feature h4 {
   max-width: 18ch;
   margin-block: 0.8rem 1.5rem;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.03;
@@ -360,7 +360,7 @@ h2 {
   max-width: 64ch;
   margin: 0;
   color: var(--graphite-muted);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .paper-list {

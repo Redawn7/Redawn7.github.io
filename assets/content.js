@@ -1,10 +1,10 @@
 const common = {
   papers: [
-    { year: "2026", title: "Latent Proofs: Causal Tracing of Mathematical Reasoning in Large Language Models", authors: "Luxuan Chen et al.", venue: "NeurIPS 2026", href: null, demo: true },
-    { year: "2026", title: "Physicist-in-the-Loop: Autonomous Agents for Hypothesis-Driven Theoretical Research", authors: "Luxuan Chen et al.", venue: "ICML 2026", href: null, demo: true },
-    { year: "2025", title: "GaugeFlow: Symmetry-Preserving Generative Models for Lattice Field Theory", authors: "Luxuan Chen et al.", venue: "Physical Review Letters, 2025", href: null, demo: true },
-    { year: "2025", title: "Foundation Neural Quantum States Across Hamiltonian Families", authors: "Luxuan Chen et al.", venue: "Nature Machine Intelligence, 2025", href: null, demo: true },
-    { year: "2025", title: "From Language to Lagrangians: Neuro-Symbolic Discovery of Effective Field Theories", authors: "Luxuan Chen et al.", venue: "ICLR 2025", href: null, demo: true },
+    { year: "2026", title: "Latent Proofs: Causal Tracing of Mathematical Reasoning in Large Language Models", authors: "Xuanchen Lu et al.", venue: "NeurIPS 2026", href: null, demo: true },
+    { year: "2026", title: "Physicist-in-the-Loop: Autonomous Agents for Hypothesis-Driven Theoretical Research", authors: "Xuanchen Lu et al.", venue: "ICML 2026", href: null, demo: true },
+    { year: "2025", title: "GaugeFlow: Symmetry-Preserving Generative Models for Lattice Field Theory", authors: "Xuanchen Lu et al.", venue: "Physical Review Letters, 2025", href: null, demo: true },
+    { year: "2025", title: "Foundation Neural Quantum States Across Hamiltonian Families", authors: "Xuanchen Lu et al.", venue: "Nature Machine Intelligence, 2025", href: null, demo: true },
+    { year: "2025", title: "From Language to Lagrangians: Neuro-Symbolic Discovery of Effective Field Theories", authors: "Xuanchen Lu et al.", venue: "ICLR 2025", href: null, demo: true },
   ],
   projects: [
     { title: "Creator Evidence Wiki", href: null, demo: true },
@@ -17,15 +17,15 @@ const common = {
 export const content = {
   en: {
     meta: {
-      title: "Luxuan Chen | AI Scientist & Theoretical Physicist",
-      description: "Luxuan Chen's bilingual personal homepage for scientific AI, theoretical physics, publications, and independent projects. Fictional demo content is clearly disclosed.",
+      title: "Xuanchen Lu | AI Scientist & Theoretical Physicist",
+      description: "Xuanchen Lu's bilingual personal homepage for scientific AI, theoretical physics, publications, and independent projects. Fictional demo content is clearly disclosed.",
     },
     languageLabel: "Choose language",
     skipLabel: "Skip to work",
     profile: {
-      name: "Luxuan Chen",
+      name: "Xuanchen Lu",
       initials: "LC",
-      portraitAlt: "Monogram portrait placeholder for Luxuan Chen",
+      portraitAlt: "Monogram portrait placeholder for Xuanchen Lu",
       role: "AI Scientist & Theoretical Physicist",
       affiliation: "PhD Researcher · Yale University",
       department: "Independent Builder · Scientific AI Researcher",
@@ -37,7 +37,7 @@ export const content = {
     },
     contacts: [
       { label: "GitHub", href: "https://github.com/Redawn7" },
-      { label: "Scholar", href: null },
+      { label: "Scholar", href: "https://cs.yale.edu/" },
       { label: "Email", href: null },
       { label: "CV", href: null },
     ],
@@ -112,7 +112,7 @@ export const content = {
     },
     contacts: [
       { label: "GitHub", href: "https://github.com/Redawn7" },
-      { label: "学术主页", href: null },
+      { label: "学术主页", href: "https://cs.yale.edu/" },
       { label: "邮箱", href: null },
       { label: "简历", href: null },
     ],

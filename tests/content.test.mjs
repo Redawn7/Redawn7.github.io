@@ -38,7 +38,7 @@ test("Chinese and English content expose the same complete shape", () => {
 
 test("the mock profile uses the approved interdisciplinary identity", () => {
   assert.equal(content.zh.profile.name, "陆宣辰");
-  assert.equal(content.en.profile.name, "Luxuan Chen");
+  assert.equal(content.en.profile.name, "Xuanchen Lu");
   assert.match(content.en.profile.role, /AI Scientist.*Theoretical Physicist/);
   assert.match(content.en.profile.affiliation, /Yale University/);
 
@@ -62,7 +62,7 @@ test("fictional papers use generic authorship and the approved venues", () => {
   assert.deepEqual(content.en.papers.map((paper) => paper.venue), expectedVenues);
   for (const locale of ["en", "zh"]) {
     for (const paper of content[locale].papers) {
-      assert.equal(paper.authors, "Luxuan Chen et al.");
+      assert.equal(paper.authors, "Xuanchen Lu et al.");
     }
   }
 });

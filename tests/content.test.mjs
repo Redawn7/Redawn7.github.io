@@ -20,11 +20,17 @@ test("Chinese and English content expose the same complete shape", () => {
     const page = content[locale];
     assert.ok(page, `missing ${locale} content`);
     for (const key of requiredProfile) assert.ok(page.profile[key], `${locale}.profile.${key}`);
+    assert.ok(page.hero.eyebrow, `${locale}.hero.eyebrow`);
+    assert.ok(page.hero.title, `${locale}.hero.title`);
+    assert.ok(page.hero.description, `${locale}.hero.description`);
+    assert.equal(page.atlas.length, 4, `${locale}.atlas`);
+    assert.equal(page.navigation.length, 5, `${locale}.navigation`);
     for (const key of ["research", "experience", "papers", "projects", "interests"]) {
       assert.ok(page.sections[key].title, `${locale}.sections.${key}.title`);
       assert.ok(page.sections[key].number, `${locale}.sections.${key}.number`);
     }
     assert.equal(page.research.length, 4);
+    assert.deepEqual(page.atlas.map((item) => item.key), page.research.map((item) => item.key));
     assert.equal(page.experience.length, 3);
     assert.equal(page.papers.length, 8);
     assert.equal(page.projects.length, 4);
@@ -40,7 +46,7 @@ test("Chinese and English content expose the same complete shape", () => {
 test("the mock profile uses the approved interdisciplinary identity", () => {
   assert.equal(content.zh.profile.name, "陆宣辰");
   assert.equal(content.en.profile.name, "Xuanchen Lu");
-  assert.match(content.en.profile.role, /AI Researcher.*Theoretical Physics/);
+  assert.match(content.en.profile.role, /Scholar.*Builder.*Explorer/);
   assert.match(content.en.profile.affiliation, /Yale University/);
 
   for (const locale of ["en", "zh"]) {

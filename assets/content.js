@@ -89,11 +89,29 @@ export const content = {
     },
     languageLabel: "Choose language",
     skipLabel: "Skip to work",
+    hero: {
+      eyebrow: "Personal research index · 2026",
+      title: "Ideas across scales.",
+      description: "From model intelligence and adaptive computation to market dynamics and emergent spacetime.",
+    },
+    atlas: [
+      { key: "llm-scaling", label: "LLM Scale", accessibleLabel: "Explore LLM Scaling Laws" },
+      { key: "inference", label: "Inference", accessibleLabel: "Explore Inference-time Scaling" },
+      { key: "markets", label: "Markets", accessibleLabel: "Explore Market Microstructure" },
+      { key: "spacetime", label: "Spacetime", accessibleLabel: "Explore AdS/CFT and Quantum Gravity" },
+    ],
+    navigation: [
+      { target: "research", label: "Research Atlas" },
+      { target: "experience", label: "Experience" },
+      { target: "papers", label: "Selected Papers" },
+      { target: "projects", label: "Projects" },
+      { target: "interests", label: "Beyond Work" },
+    ],
     profile: {
       name: "Xuanchen Lu",
       initials: "LC",
       portraitAlt: "Monogram portrait placeholder for Xuanchen Lu",
-      role: "AI Researcher · Quantitative Thinker · Theoretical Physics",
+      role: "Scholar · Builder · Explorer",
       affiliation: "PhD Researcher · Yale University",
       department: "Scaling Laws · Markets · Quantum Gravity",
       location: "Based between New Haven & Chiang Mai",
@@ -117,21 +135,25 @@ export const content = {
     },
     research: [
       {
+        key: "llm-scaling",
         kicker: "LLM Scaling Laws",
         title: "Predictive scaling frameworks for large language models",
         description: "Performance scaling across parameters, data, and compute, with an emphasis on compute-optimal training, data-parameter allocation, and emergent capabilities.",
       },
       {
+        key: "inference",
         kicker: "Inference-time Scaling",
         title: "Adaptive test-time compute for reasoning systems",
         description: "Long-horizon reasoning, Best-of-N sampling, search, verifier-based methods, adaptive compute allocation, and the overthinking problem.",
       },
       {
+        key: "markets",
         kicker: "Market Microstructure",
         title: "Order flow, liquidity, and short-horizon price formation",
         description: "Limit order books, bid-ask spreads, price impact, informed trading, and abnormal behavior in high-frequency market data.",
       },
       {
+        key: "spacetime",
         kicker: "AdS/CFT & Quantum Gravity",
         title: "Spacetime emergence from quantum information",
         description: "Holography, black hole information, quantum entanglement, and the possibility that classical geometry arises from deeper information structures.",
@@ -179,11 +201,29 @@ export const content = {
     },
     languageLabel: "选择语言",
     skipLabel: "跳转到研究与项目",
+    hero: {
+      eyebrow: "个人研究索引 · 2026",
+      title: "思想，跨越尺度。",
+      description: "从模型智能与自适应计算，到市场动力学与涌现时空。",
+    },
+    atlas: [
+      { key: "llm-scaling", label: "模型尺度", accessibleLabel: "探索大语言模型尺度定律" },
+      { key: "inference", label: "推理计算", accessibleLabel: "探索推理时扩展" },
+      { key: "markets", label: "市场", accessibleLabel: "探索金融市场微观结构" },
+      { key: "spacetime", label: "时空", accessibleLabel: "探索 AdS/CFT 与量子引力" },
+    ],
+    navigation: [
+      { target: "research", label: "研究图谱" },
+      { target: "experience", label: "个人履历" },
+      { target: "papers", label: "精选论文" },
+      { target: "projects", label: "开发项目" },
+      { target: "interests", label: "工作之外" },
+    ],
     profile: {
       name: "陆宣辰",
       initials: "LC",
       portraitAlt: "陆宣辰的字母头像占位图",
-      role: "AI 研究者 · 量化思考者 · 理论物理",
+      role: "学者 · 创造者 · 探索者",
       affiliation: "耶鲁大学博士研究生",
       department: "尺度定律 · 市场结构 · 量子引力",
       location: "往返于纽黑文与清迈",
@@ -207,21 +247,25 @@ export const content = {
     },
     research: [
       {
+        key: "llm-scaling",
         kicker: "大语言模型尺度定律",
         title: "面向大语言模型的可预测尺度框架",
         description: "研究性能随参数、数据与计算预算增长的规律，关注 compute-optimal training、数据-参数配置与能力涌现。",
       },
       {
+        key: "inference",
         kicker: "推理时扩展",
         title: "面向推理系统的自适应测试时计算",
         description: "研究长链推理、Best-of-N、搜索与 verifier、自适应计算分配及 overthinking 问题。",
       },
       {
+        key: "markets",
         kicker: "金融市场微观结构",
         title: "订单流、流动性与短期价格形成",
         description: "关注限价订单簿、买卖价差、价格冲击、informed trading 与高频数据中的异常交易行为。",
       },
       {
+        key: "spacetime",
         kicker: "AdS/CFT 与量子引力",
         title: "从量子信息结构到时空涌现",
         description: "研究全息原理、黑洞信息悖论、量子纠缠，以及经典时空几何是否可由更基本的信息结构涌现。",

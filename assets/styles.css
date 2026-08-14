@@ -339,22 +339,22 @@ h2 {
 .language-switch {
   display: inline-flex;
   flex: 0 0 auto;
-  padding: 0.12rem;
+  padding: 0.08rem;
   border: 1px solid var(--hairline);
   border-radius: 999px;
   background: var(--surface);
 }
 
 .language-switch button {
-  min-width: 38px;
-  min-height: 34px;
-  padding-inline: 0.55rem;
+  min-width: 31px;
+  min-height: 26px;
+  padding-inline: 0.38rem;
   border: 0;
   border-radius: 999px;
   color: var(--graphite-muted);
   background: transparent;
   cursor: pointer;
-  font-size: 0.68rem;
+  font-size: 0.58rem;
   font-weight: 600;
   transition: color 160ms var(--ease-out), background-color 160ms var(--ease-out);
 }
@@ -372,12 +372,17 @@ h2 {
 }
 
 #research {
-  padding-block-start: clamp(1.5rem, 3vw, 2.75rem);
+  position: relative;
+  padding-block-start: clamp(3.25rem, 5vw, 4.25rem);
 }
 
 .research-toolbar {
+  position: absolute;
+  z-index: 2;
   display: flex;
   justify-content: flex-end;
+  inset-block-start: 0.5rem;
+  inset-inline-end: 0;
 }
 
 .research-atlas {
@@ -832,7 +837,6 @@ h2 {
     padding: 1.5rem;
   }
 
-  .research-toolbar,
   .research-atlas,
   .research-list {
     grid-column: 2;
@@ -999,10 +1003,6 @@ h2 {
 
   .work-header {
     flex-direction: column-reverse;
-  }
-
-  .language-switch {
-    align-self: flex-end;
   }
 
   .research-atlas {

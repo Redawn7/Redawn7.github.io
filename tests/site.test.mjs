@@ -48,6 +48,9 @@ test("visual contract includes responsive, focus, and reduced-motion rules", asy
   assert.match(css, /height:\s*100dvh/);
   assert.match(css, /\.research-atlas/);
   assert.match(css, /\.atlas-connections/);
+  assert.match(css, /#research\s*\{[^}]*position:\s*relative/s);
+  assert.match(css, /\.research-toolbar\s*\{[^}]*position:\s*absolute[^}]*inset-block-start:\s*0\.5rem[^}]*inset-inline-end:\s*0/s);
+  assert.match(css, /\.language-switch button\s*\{[^}]*min-height:\s*26px[^}]*font-size:\s*0\.58rem/s);
   assert.match(css, /\.atlas-node\.is-active/);
   assert.match(css, /\.section-progress/);
   assert.match(css, /\.reveal-section\.is-visible/);

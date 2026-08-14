@@ -1,5 +1,5 @@
-import { content } from "./content.js?v=20260814-5";
-import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-5";
+import { content } from "./content.js?v=20260814-6";
+import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-6";
 
 const byId = (id) => document.getElementById(id);
 let atlasController = null;
@@ -233,9 +233,6 @@ function applyLocale(locale, { persist = true } = {}) {
   setText("profile-bio", page.profile.bio);
   setText("now-label", page.profile.nowLabel);
   setText("now-text", page.profile.now);
-  setText("hero-eyebrow", page.hero.eyebrow);
-  setText("hero-title", page.hero.title);
-  setText("hero-description", page.hero.description);
   byId("portrait").alt = page.profile.portraitAlt;
   renderSimpleList("focus-list", page.profile.focus);
   renderContacts(page.contacts);

@@ -13,8 +13,10 @@ test("document contains the complete semantic personal homepage", async () => {
   assert.match(html, /data-language-switch/);
   assert.match(html, /<aside[^>]*class="profile-rail"/);
   assert.match(html, /<main[^>]*id="work"/);
-  assert.match(html, /class="hero-statement"/);
+  assert.doesNotMatch(html, /class="hero-statement"/);
   assert.match(html, /id="research-atlas"/);
+  assert.match(html, /class="atlas-connections"/);
+  assert.equal((html.match(/<line /g) ?? []).length, 3);
   assert.equal((html.match(/data-atlas-key=/g) ?? []).length, 4);
   assert.equal((html.match(/data-research-key=/g) ?? []).length, 4);
   assert.match(html, /class="section-progress"/);
@@ -42,8 +44,10 @@ test("visual contract includes responsive, focus, and reduced-motion rules", asy
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /min-height:\s*44px/);
   assert.match(css, /\.profile-rail\s*\{[^}]*position:\s*fixed/s);
+  assert.match(css, /\.profile-rail h1\s*\{[^}]*white-space:\s*nowrap/s);
   assert.match(css, /height:\s*100dvh/);
   assert.match(css, /\.research-atlas/);
+  assert.match(css, /\.atlas-connections/);
   assert.match(css, /\.atlas-node\.is-active/);
   assert.match(css, /\.section-progress/);
   assert.match(css, /\.reveal-section\.is-visible/);

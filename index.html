@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://redawn7.github.io/">
     <link rel="canonical" href="https://redawn7.github.io/">
     <link rel="icon" href="./assets/avatar.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./assets/styles.css?v=20260814-5">
+    <link rel="stylesheet" href="./assets/styles.css?v=20260814-6">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -28,7 +28,7 @@
         }
       }
     </script>
-    <script type="module" src="./assets/app.js?v=20260814-5"></script>
+    <script type="module" src="./assets/app.js?v=20260814-6"></script>
   </head>
   <body>
     <a class="skip-link" href="#work" id="skip-link">Skip to work</a>
@@ -87,19 +87,14 @@
               <button type="button" data-locale="en" class="is-active" aria-pressed="true">EN</button>
             </div>
           </div>
-          <div class="hero-statement">
-            <p class="eyebrow" id="hero-eyebrow">Personal research index · 2026</p>
-            <h2 id="hero-title">Ideas across scales.</h2>
-            <p class="page-intro" id="hero-description">From model intelligence and adaptive computation to market dynamics and emergent spacetime.</p>
-          </div>
           <div class="research-atlas" id="research-atlas" aria-labelledby="atlas-title">
             <p class="visually-hidden" id="atlas-title">Interactive research atlas</p>
-            <div class="atlas-field" aria-hidden="true">
-              <span class="atlas-orbit"></span>
-              <span class="atlas-path atlas-path--one"></span>
-              <span class="atlas-path atlas-path--two"></span>
-              <span class="atlas-path atlas-path--three"></span>
-            </div>
+            <svg class="atlas-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <ellipse cx="54" cy="48" rx="22" ry="25"></ellipse>
+              <line x1="12" y1="30" x2="38" y2="68"></line>
+              <line x1="38" y1="68" x2="65" y2="22"></line>
+              <line x1="65" y1="22" x2="82" y2="72"></line>
+            </svg>
             <div class="atlas-nodes" id="atlas-nodes">
               <button class="atlas-node atlas-node--llm-scaling" type="button" data-atlas-key="llm-scaling" aria-label="Explore LLM Scaling Laws"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">LLM Scale</span></button>
               <button class="atlas-node atlas-node--inference" type="button" data-atlas-key="inference" aria-label="Explore Inference-time Scaling"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Inference</span></button>

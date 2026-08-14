@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script>document.documentElement.classList.add("js");</script>
     <title>Xuanchen Lu | AI, Markets & Quantum Gravity</title>
     <meta name="description" content="Xuanchen Lu's bilingual fictional personal homepage for LLM scaling, inference-time compute, market microstructure, quantum gravity, papers, and projects.">
     <meta name="theme-color" content="#F4F2EC">
@@ -38,7 +39,7 @@
           <img class="portrait" id="portrait" src="./assets/avatar.svg" alt="Monogram portrait placeholder for Xuanchen Lu" width="480" height="600">
 
           <div class="identity">
-            <p class="role" id="profile-role">AI Researcher · Quantitative Thinker · Theoretical Physics</p>
+            <p class="role" id="profile-role">Scholar · Builder · Explorer</p>
             <h1 id="profile-name">Xuanchen Lu</h1>
             <p class="affiliation"><strong id="profile-affiliation">PhD Researcher · Yale University</strong><span id="profile-department">Scaling Laws · Markets · Quantum Gravity</span></p>
             <p class="location" id="profile-location">Based between New Haven &amp; Chiang Mai</p>
@@ -63,11 +64,19 @@
             <p class="micro-label" id="now-label">Now</p>
             <p id="now-text">Building a predictive research agenda across model scaling, reasoning compute, market dynamics, and holographic physics.</p>
           </div>
+
+          <nav class="section-progress" id="section-progress" aria-label="Page sections">
+            <a href="#research" data-section-target="research" aria-current="true"><span class="progress-number">01</span><span class="progress-label">Research Atlas</span></a>
+            <a href="#experience" data-section-target="experience"><span class="progress-number">02</span><span class="progress-label">Experience</span></a>
+            <a href="#papers" data-section-target="papers"><span class="progress-number">03</span><span class="progress-label">Selected Papers</span></a>
+            <a href="#projects" data-section-target="projects"><span class="progress-number">04</span><span class="progress-label">Projects</span></a>
+            <a href="#interests" data-section-target="interests"><span class="progress-number">05</span><span class="progress-label">Beyond Work</span></a>
+          </nav>
         </div>
       </aside>
 
       <main id="work" tabindex="-1">
-        <section class="indexed-section" id="research" aria-labelledby="research-section-title">
+        <section class="indexed-section reveal-section" id="research" aria-labelledby="research-section-title">
           <header class="section-key">
             <span id="research-number">01</span>
             <h3 id="research-section-title">Research</h3>
@@ -78,15 +87,35 @@
               <button type="button" data-locale="en" class="is-active" aria-pressed="true">EN</button>
             </div>
           </div>
+          <div class="hero-statement">
+            <p class="eyebrow" id="hero-eyebrow">Personal research index · 2026</p>
+            <h2 id="hero-title">Ideas across scales.</h2>
+            <p class="page-intro" id="hero-description">From model intelligence and adaptive computation to market dynamics and emergent spacetime.</p>
+          </div>
+          <div class="research-atlas" id="research-atlas" aria-labelledby="atlas-title">
+            <p class="visually-hidden" id="atlas-title">Interactive research atlas</p>
+            <div class="atlas-field" aria-hidden="true">
+              <span class="atlas-orbit"></span>
+              <span class="atlas-path atlas-path--one"></span>
+              <span class="atlas-path atlas-path--two"></span>
+              <span class="atlas-path atlas-path--three"></span>
+            </div>
+            <div class="atlas-nodes" id="atlas-nodes">
+              <button class="atlas-node atlas-node--llm-scaling" type="button" data-atlas-key="llm-scaling" aria-label="Explore LLM Scaling Laws"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">LLM Scale</span></button>
+              <button class="atlas-node atlas-node--inference" type="button" data-atlas-key="inference" aria-label="Explore Inference-time Scaling"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Inference</span></button>
+              <button class="atlas-node atlas-node--markets" type="button" data-atlas-key="markets" aria-label="Explore Market Microstructure"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Markets</span></button>
+              <button class="atlas-node atlas-node--spacetime" type="button" data-atlas-key="spacetime" aria-label="Explore AdS/CFT and Quantum Gravity"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Spacetime</span></button>
+            </div>
+          </div>
           <div class="research-list" id="research-list">
-            <article class="research-feature"><p class="research-index">01</p><p class="micro-label">LLM Scaling Laws</p><h4>Predictive scaling frameworks for large language models</h4><p class="research-description">Performance scaling across parameters, data, and compute, with an emphasis on compute-optimal training, data-parameter allocation, and emergent capabilities.</p></article>
-            <article class="research-feature"><p class="research-index">02</p><p class="micro-label">Inference-time Scaling</p><h4>Adaptive test-time compute for reasoning systems</h4><p class="research-description">Long-horizon reasoning, Best-of-N sampling, search, verifier-based methods, adaptive compute allocation, and the overthinking problem.</p></article>
-            <article class="research-feature"><p class="research-index">03</p><p class="micro-label">Market Microstructure</p><h4>Order flow, liquidity, and short-horizon price formation</h4><p class="research-description">Limit order books, bid-ask spreads, price impact, informed trading, and abnormal behavior in high-frequency market data.</p></article>
-            <article class="research-feature"><p class="research-index">04</p><p class="micro-label">AdS/CFT &amp; Quantum Gravity</p><h4>Spacetime emergence from quantum information</h4><p class="research-description">Holography, black hole information, quantum entanglement, and the possibility that classical geometry arises from deeper information structures.</p></article>
+            <article class="research-feature" data-research-key="llm-scaling" tabindex="0"><p class="research-index">01</p><p class="micro-label">LLM Scaling Laws</p><h4>Predictive scaling frameworks for large language models</h4><p class="research-description">Performance scaling across parameters, data, and compute, with an emphasis on compute-optimal training, data-parameter allocation, and emergent capabilities.</p></article>
+            <article class="research-feature" data-research-key="inference" tabindex="0"><p class="research-index">02</p><p class="micro-label">Inference-time Scaling</p><h4>Adaptive test-time compute for reasoning systems</h4><p class="research-description">Long-horizon reasoning, Best-of-N sampling, search, verifier-based methods, adaptive compute allocation, and the overthinking problem.</p></article>
+            <article class="research-feature" data-research-key="markets" tabindex="0"><p class="research-index">03</p><p class="micro-label">Market Microstructure</p><h4>Order flow, liquidity, and short-horizon price formation</h4><p class="research-description">Limit order books, bid-ask spreads, price impact, informed trading, and abnormal behavior in high-frequency market data.</p></article>
+            <article class="research-feature" data-research-key="spacetime" tabindex="0"><p class="research-index">04</p><p class="micro-label">AdS/CFT &amp; Quantum Gravity</p><h4>Spacetime emergence from quantum information</h4><p class="research-description">Holography, black hole information, quantum entanglement, and the possibility that classical geometry arises from deeper information structures.</p></article>
           </div>
         </section>
 
-        <section class="indexed-section" id="experience" aria-labelledby="experience-section-title">
+        <section class="indexed-section reveal-section" id="experience" aria-labelledby="experience-section-title">
           <header class="section-key">
             <span id="experience-number">02</span>
             <h3 id="experience-section-title">Experience</h3>
@@ -98,7 +127,7 @@
           </div>
         </section>
 
-        <section class="indexed-section" id="papers" aria-labelledby="papers-section-title">
+        <section class="indexed-section reveal-section" id="papers" aria-labelledby="papers-section-title">
           <header class="section-key">
             <span id="papers-number">03</span>
             <h3 id="papers-section-title">Selected Papers</h3>
@@ -147,7 +176,7 @@
           </div>
         </section>
 
-        <section class="indexed-section" id="projects" aria-labelledby="projects-section-title">
+        <section class="indexed-section reveal-section" id="projects" aria-labelledby="projects-section-title">
           <header class="section-key">
             <span id="projects-number">04</span>
             <h3 id="projects-section-title">Projects</h3>
@@ -160,7 +189,7 @@
           </div>
         </section>
 
-        <section class="indexed-section" id="interests" aria-labelledby="interests-section-title">
+        <section class="indexed-section reveal-section" id="interests" aria-labelledby="interests-section-title">
           <header class="section-key">
             <span id="interests-number">05</span>
             <h3 id="interests-section-title">Beyond Work</h3>

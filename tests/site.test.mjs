@@ -13,6 +13,12 @@ test("document contains the complete semantic personal homepage", async () => {
   assert.match(html, /data-language-switch/);
   assert.match(html, /<aside[^>]*class="profile-rail"/);
   assert.match(html, /<main[^>]*id="work"/);
+  assert.match(html, /class="hero-statement"/);
+  assert.match(html, /id="research-atlas"/);
+  assert.equal((html.match(/data-atlas-key=/g) ?? []).length, 4);
+  assert.equal((html.match(/data-research-key=/g) ?? []).length, 4);
+  assert.match(html, /class="section-progress"/);
+  assert.equal((html.match(/data-section-target=/g) ?? []).length, 5);
   for (const id of ["research", "experience", "papers", "projects", "interests", "demo-disclosure"]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }

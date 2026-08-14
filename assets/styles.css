@@ -279,22 +279,22 @@ h2 {
 .language-switch {
   display: inline-flex;
   flex: 0 0 auto;
-  padding: 0.2rem;
+  padding: 0.12rem;
   border: 1px solid var(--hairline);
   border-radius: 999px;
   background: var(--surface);
 }
 
 .language-switch button {
-  min-width: 50px;
-  min-height: 44px;
-  padding-inline: 0.75rem;
+  min-width: 38px;
+  min-height: 34px;
+  padding-inline: 0.55rem;
   border: 0;
   border-radius: 999px;
   color: var(--graphite-muted);
   background: transparent;
   cursor: pointer;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 600;
   transition: color 160ms var(--ease-out), background-color 160ms var(--ease-out);
 }
@@ -309,6 +309,15 @@ h2 {
   gap: var(--space-3);
   padding-block: clamp(2.25rem, 5vw, 4.5rem);
   border-block-start: 1px solid var(--graphite);
+}
+
+#research {
+  padding-block-start: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.research-toolbar {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .section-key {
@@ -335,16 +344,26 @@ h2 {
 }
 
 .research-list {
+  display: grid;
   max-width: 48rem;
+  border-block: 1px solid var(--hairline);
 }
 
 .research-feature {
-  padding-block-start: clamp(2rem, 5vw, 4.5rem);
+  padding-block: 1.35rem;
 }
 
 .research-feature + .research-feature {
-  margin-block-start: clamp(2rem, 5vw, 4rem);
+  margin-block-start: 0;
   border-block-start: 1px solid var(--hairline);
+}
+
+.research-index {
+  margin-block-end: 1.5rem;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .research-feature h4 {
@@ -512,7 +531,28 @@ h2 {
   }
 
   .research-feature {
-    padding-block-start: 0;
+    padding: 1.5rem;
+  }
+
+  .research-toolbar,
+  .research-list {
+    grid-column: 2;
+  }
+
+  .research-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .research-feature + .research-feature {
+    border-block-start: 0;
+  }
+
+  .research-feature:nth-child(2n) {
+    border-inline-start: 1px solid var(--hairline);
+  }
+
+  .research-feature:nth-child(n + 3) {
+    border-block-start: 1px solid var(--hairline);
   }
 
   .paper-row {

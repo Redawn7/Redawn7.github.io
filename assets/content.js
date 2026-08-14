@@ -41,11 +41,6 @@ export const content = {
       { label: "Email", href: null },
       { label: "CV", href: null },
     ],
-    page: {
-      eyebrow: "Research at the edge of intelligence & matter",
-      title: "Work & Exploration",
-      intro: "AI for fundamental physics—from interpretable reasoning and autonomous discovery to quantum matter and lattice field theory.",
-    },
     sections: {
       research: { number: "01", title: "Research" },
       experience: { number: "02", title: "Experience" },
@@ -65,6 +60,10 @@ export const content = {
       {
         kicker: "Quantum matter",
         title: "Foundation Models for Quantum Matter and Lattice Field Theory",
+      },
+      {
+        kicker: "High-energy theory",
+        title: "Generative Models for Scattering Amplitudes and Effective Field Theories",
       },
     ],
     experience: [
@@ -119,11 +118,6 @@ export const content = {
       { label: "邮箱", href: null },
       { label: "简历", href: null },
     ],
-    page: {
-      eyebrow: "探索智能与物质的边界",
-      title: "研究、论文与开发",
-      intro: "面向基础物理的人工智能：从可解释推理与自主发现，到量子物质与格点场论。",
-    },
     sections: {
       research: { number: "01", title: "研究方向" },
       experience: { number: "02", title: "个人履历" },
@@ -143,6 +137,10 @@ export const content = {
       {
         kicker: "量子物质",
         title: "量子多体与格点场论基础模型",
+      },
+      {
+        kicker: "高能理论",
+        title: "散射振幅与有效场论生成模型",
       },
     ],
     experience: [

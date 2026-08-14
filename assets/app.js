@@ -1,5 +1,5 @@
-import { content } from "./content.js?v=20260813-2";
-import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260813-2";
+import { content } from "./content.js?v=20260814-3";
+import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-3";
 
 const byId = (id) => document.getElementById(id);
 
@@ -45,10 +45,11 @@ function demoAction(label) {
 }
 
 function renderResearch(items) {
-  const entries = items.map((direction) => {
+  const entries = items.map((direction, index) => {
     const entry = document.createElement("article");
     entry.className = "research-feature";
     entry.append(
+      textElement("p", "research-index", String(index + 1).padStart(2, "0")),
       textElement("p", "micro-label", direction.kicker),
       textElement("h4", "", direction.title),
     );
@@ -123,9 +124,6 @@ function applyLocale(locale, { persist = true } = {}) {
   renderSimpleList("focus-list", page.profile.focus);
   renderContacts(page.contacts);
 
-  setText("page-eyebrow", page.page.eyebrow);
-  setText("page-title", page.page.title);
-  setText("page-intro", page.page.intro);
   for (const key of ["research", "experience", "papers", "projects", "interests"]) {
     setText(`${key}-number`, page.sections[key].number);
     setText(`${key}-section-title`, page.sections[key].title);

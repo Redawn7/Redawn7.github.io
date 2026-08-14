@@ -24,7 +24,7 @@ test("Chinese and English content expose the same complete shape", () => {
       assert.ok(page.sections[key].title, `${locale}.sections.${key}.title`);
       assert.ok(page.sections[key].number, `${locale}.sections.${key}.number`);
     }
-    assert.equal(page.research.length, 3);
+    assert.equal(page.research.length, 4);
     assert.equal(page.experience.length, 3);
     assert.equal(page.papers.length, 5);
     assert.equal(page.projects.length, 4);
@@ -44,7 +44,7 @@ test("the mock profile uses the approved interdisciplinary identity", () => {
   assert.match(content.en.profile.affiliation, /Yale University/);
 
   for (const locale of ["en", "zh"]) {
-    assert.equal(content[locale].research.length, 3);
+    assert.equal(content[locale].research.length, 4);
     for (const direction of content[locale].research) {
       assert.ok(direction.kicker);
       assert.ok(direction.title);

@@ -375,6 +375,14 @@ h2 {
   line-height: 1.25;
 }
 
+.research-description {
+  max-width: 60ch;
+  margin: 0;
+  color: var(--graphite-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
 .paper-list,
 .experience-list {
   border-block-end: 1px solid var(--hairline);

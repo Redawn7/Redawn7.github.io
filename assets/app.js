@@ -1,5 +1,5 @@
-import { content } from "./content.js?v=20260814-3";
-import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-3";
+import { content } from "./content.js?v=20260814-4";
+import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-4";
 
 const byId = (id) => document.getElementById(id);
 
@@ -52,6 +52,7 @@ function renderResearch(items) {
       textElement("p", "research-index", String(index + 1).padStart(2, "0")),
       textElement("p", "micro-label", direction.kicker),
       textElement("h4", "", direction.title),
+      textElement("p", "research-description", direction.description),
     );
     return entry;
   });

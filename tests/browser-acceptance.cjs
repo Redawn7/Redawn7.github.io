@@ -26,9 +26,9 @@ mkdirSync(output, { recursive: true });
     if ((await page.locator("#profile-name").innerText()) !== "Xuanchen Lu") throw new Error(`${name}: missing name`);
     if ((await page.locator("#research-list .research-feature").count()) !== 4) throw new Error(`${name}: wrong research count`);
     if ((await page.locator("#experience-list .experience-row").count()) !== 3) throw new Error(`${name}: wrong experience count`);
-    if ((await page.locator("#paper-list .paper-row").count()) !== 5) throw new Error(`${name}: wrong paper count`);
+    if ((await page.locator("#paper-list .paper-row").count()) !== 8) throw new Error(`${name}: wrong paper count`);
     if ((await page.locator("#project-list .project-entry").count()) !== 4) throw new Error(`${name}: wrong project count`);
-    if ((await page.locator("[data-demo-action]").count()) !== 9) throw new Error(`${name}: unsafe demo actions`);
+    if ((await page.locator("[data-demo-action]").count()) !== 12) throw new Error(`${name}: unsafe demo actions`);
     if (!(await page.locator("#demo-disclosure").isVisible())) throw new Error(`${name}: disclosure hidden`);
     if (!(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth))) throw new Error(`${name}: horizontal overflow`);
 
@@ -45,11 +45,11 @@ mkdirSync(output, { recursive: true });
       await page.getByRole("button", { name: "中文" }).click();
       if ((await page.locator("html").getAttribute("lang")) !== "zh-CN") throw new Error("language attribute not updated");
       if ((await page.locator("#research-section-title").innerText()) !== "研究方向") throw new Error("Chinese copy not rendered");
-      if (!(await page.locator('meta[name="description"]').getAttribute("content")).includes("中英双语个人主页")) throw new Error("translated meta description not applied");
-      if (!(await page.locator('meta[property="og:description"]').getAttribute("content")).includes("中英双语个人主页")) throw new Error("translated Open Graph description not applied");
+      if (!(await page.locator('meta[name="description"]').getAttribute("content")).includes("中英双语虚拟个人主页")) throw new Error("translated meta description not applied");
+      if (!(await page.locator('meta[property="og:description"]').getAttribute("content")).includes("中英双语虚拟个人主页")) throw new Error("translated Open Graph description not applied");
       if ((await page.evaluate(() => localStorage.getItem("redawn7-locale-v2"))) !== "zh") throw new Error("locale not persisted");
       await page.reload({ waitUntil: "networkidle" });
-      if ((await page.locator("#page-title").innerText()) !== "研究、论文与开发") throw new Error("locale not restored");
+      if ((await page.locator("#research-section-title").innerText()) !== "研究方向") throw new Error("locale not restored");
     }
 
     await page.screenshot({ path: `${output}/${name}.png`, fullPage: true });
@@ -59,7 +59,7 @@ mkdirSync(output, { recursive: true });
   const fallback = await browser.newPage({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
   await fallback.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
   if ((await fallback.locator("#research-list .research-feature").count()) !== 4) throw new Error("no-JavaScript fallback lost research directions");
-  if ((await fallback.locator("#paper-list .paper-row").count()) !== 5) throw new Error("no-JavaScript fallback lost papers");
+  if ((await fallback.locator("#paper-list .paper-row").count()) !== 8) throw new Error("no-JavaScript fallback lost papers");
   if (!(await fallback.locator("#demo-disclosure").isVisible())) throw new Error("no-JavaScript fallback lost disclosure");
   await fallback.close();
 

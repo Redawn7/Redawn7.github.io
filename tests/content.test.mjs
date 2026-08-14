@@ -26,7 +26,7 @@ test("Chinese and English content expose the same complete shape", () => {
     }
     assert.equal(page.research.length, 4);
     assert.equal(page.experience.length, 3);
-    assert.equal(page.papers.length, 5);
+    assert.equal(page.papers.length, 8);
     assert.equal(page.projects.length, 4);
     assert.ok(page.interests.length >= 4);
     assert.ok(page.disclosure.length > 40);
@@ -40,7 +40,7 @@ test("Chinese and English content expose the same complete shape", () => {
 test("the mock profile uses the approved interdisciplinary identity", () => {
   assert.equal(content.zh.profile.name, "陆宣辰");
   assert.equal(content.en.profile.name, "Xuanchen Lu");
-  assert.match(content.en.profile.role, /AI Scientist.*Theoretical Physicist/);
+  assert.match(content.en.profile.role, /AI Researcher.*Theoretical Physics/);
   assert.match(content.en.profile.affiliation, /Yale University/);
 
   for (const locale of ["en", "zh"]) {
@@ -48,7 +48,7 @@ test("the mock profile uses the approved interdisciplinary identity", () => {
     for (const direction of content[locale].research) {
       assert.ok(direction.kicker);
       assert.ok(direction.title);
-      assert.equal("description" in direction, false);
+      assert.ok(direction.description);
     }
   }
 });
@@ -58,12 +58,13 @@ test("the profile biographies stay concise enough for a fixed desktop rail", () 
   assert.ok(content.zh.profile.bio.length <= 110);
 });
 
-test("fictional papers use generic authorship and the approved venues", () => {
-  const expectedVenues = ["NeurIPS 2026", "ICML 2026", "Physical Review Letters, 2025", "Nature Machine Intelligence, 2025", "ICLR 2025"];
+test("fictional paper selections use the approved compact homepage set", () => {
+  const expectedVenues = ["ICLR '25", "ICML '25", "ICLR '25", "NeurIPS '23 Oral", "AFA '25", "AFA '25 / Federal Reserve", "JHEP '25", "JHEP '25"];
   assert.deepEqual(content.en.papers.map((paper) => paper.venue), expectedVenues);
   for (const locale of ["en", "zh"]) {
     for (const paper of content[locale].papers) {
-      assert.equal(paper.authors, "Xuanchen Lu et al.");
+      assert.ok(paper.authors);
+      assert.ok(paper.citation);
     }
   }
 });

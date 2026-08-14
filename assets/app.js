@@ -2,6 +2,7 @@ import { content } from "./content.js?v=20260814-4";
 import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-4";
 
 const byId = (id) => document.getElementById(id);
+let atlasController = null;
 
 function setText(id, value) {
   const node = byId(id);
@@ -48,6 +49,8 @@ function renderResearch(items) {
   const entries = items.map((direction, index) => {
     const entry = document.createElement("article");
     entry.className = "research-feature";
+    entry.dataset.researchKey = direction.key;
+    entry.tabIndex = 0;
     entry.append(
       textElement("p", "research-index", String(index + 1).padStart(2, "0")),
       textElement("p", "micro-label", direction.kicker),
@@ -57,6 +60,113 @@ function renderResearch(items) {
     return entry;
   });
   byId("research-list").replaceChildren(...entries);
+}
+
+function renderAtlas(items) {
+  const nodes = items.map((item) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `atlas-node atlas-node--${item.key}`;
+    button.dataset.atlasKey = item.key;
+    button.setAttribute("aria-label", item.accessibleLabel);
+    button.append(
+      textElement("span", "atlas-dot", ""),
+      textElement("span", "atlas-label", item.label),
+    );
+    return button;
+  });
+  byId("atlas-nodes").replaceChildren(...nodes);
+}
+
+function renderSectionProgress(items) {
+  const links = items.map((item, index) => {
+    const link = document.createElement("a");
+    link.href = `#${item.target}`;
+    link.dataset.sectionTarget = item.target;
+    link.append(
+      textElement("span", "progress-number", String(index + 1).padStart(2, "0")),
+      textElement("span", "progress-label", item.label),
+    );
+    return link;
+  });
+  byId("section-progress").replaceChildren(...links);
+}
+
+function bindResearchAtlas() {
+  atlasController?.abort();
+  atlasController = new AbortController();
+  const { signal } = atlasController;
+  const atlas = byId("research-atlas");
+  const targets = [...document.querySelectorAll("[data-atlas-key], [data-research-key]")];
+  const activate = (key = "") => {
+    document.documentElement.dataset.activeResearch = key;
+    for (const target of targets) {
+      const targetKey = target.dataset.atlasKey ?? target.dataset.researchKey;
+      target.classList.toggle("is-active", Boolean(key) && targetKey === key);
+      target.classList.toggle("is-dimmed", Boolean(key) && targetKey !== key);
+    }
+  };
+
+  for (const target of targets) {
+    const key = target.dataset.atlasKey ?? target.dataset.researchKey;
+    target.addEventListener("pointerenter", () => activate(key), { signal });
+    target.addEventListener("pointerleave", () => activate(), { signal });
+    target.addEventListener("focus", () => activate(key), { signal });
+    target.addEventListener("blur", () => activate(), { signal });
+  }
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let frame = 0;
+    atlas.addEventListener("pointermove", (event) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const bounds = atlas.getBoundingClientRect();
+        atlas.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
+        atlas.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
+      });
+    }, { signal });
+  }
+}
+
+function bindRevealSections() {
+  const sections = [...document.querySelectorAll(".reveal-section")];
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    sections.forEach((section) => section.classList.add("is-visible"));
+    return;
+  }
+
+  document.documentElement.classList.add("has-reveal-motion");
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  }, { rootMargin: "0px 0px -12%", threshold: 0.08 });
+  sections.forEach((section) => observer.observe(section));
+}
+
+function bindSectionProgress() {
+  const sections = [...document.querySelectorAll(".indexed-section[id]")];
+  const setCurrent = (id) => {
+    for (const link of document.querySelectorAll("[data-section-target]")) {
+      if (link.dataset.sectionTarget === id) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    }
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    setCurrent(sections[0]?.id);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top));
+    if (visible[0]) setCurrent(visible[0].target.id);
+  }, { rootMargin: "-16% 0px -68%", threshold: 0 });
+  sections.forEach((section) => observer.observe(section));
 }
 
 function renderExperience(items) {
@@ -121,6 +231,9 @@ function applyLocale(locale, { persist = true } = {}) {
   setText("profile-bio", page.profile.bio);
   setText("now-label", page.profile.nowLabel);
   setText("now-text", page.profile.now);
+  setText("hero-eyebrow", page.hero.eyebrow);
+  setText("hero-title", page.hero.title);
+  setText("hero-description", page.hero.description);
   byId("portrait").alt = page.profile.portraitAlt;
   renderSimpleList("focus-list", page.profile.focus);
   renderContacts(page.contacts);
@@ -130,6 +243,8 @@ function applyLocale(locale, { persist = true } = {}) {
     setText(`${key}-section-title`, page.sections[key].title);
   }
   renderResearch(page.research);
+  renderAtlas(page.atlas);
+  renderSectionProgress(page.navigation);
   renderExperience(page.experience);
   renderPapers(page.papers);
   renderProjects(page.projects);
@@ -137,6 +252,7 @@ function applyLocale(locale, { persist = true } = {}) {
   setText("disclosure-label", page.disclosureLabel);
   setText("disclosure-text", page.disclosure);
   setText("footer-text", page.footer);
+  bindResearchAtlas();
 
   const switcher = document.querySelector("[data-language-switch]");
   switcher.setAttribute("aria-label", page.languageLabel);
@@ -158,6 +274,9 @@ try {
 const initialLocale = detectLocale({ stored, browserLanguage: navigator.language });
 applyLocale(initialLocale, { persist: false });
 byId("year").textContent = String(new Date().getFullYear());
+bindRevealSections();
+bindSectionProgress();
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add("is-ready")));
 
 document.querySelector("[data-language-switch]").addEventListener("click", (event) => {
   const button = event.target.closest("button[data-locale]");

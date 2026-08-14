@@ -50,4 +50,10 @@ test("application renders demo actions without navigable paper or project links"
   assert.match(app, /aria-disabled/);
   assert.match(app, /data-demo-action/);
   assert.doesNotMatch(app, /innerHTML\s*=/);
+  assert.match(app, /function renderAtlas/);
+  assert.match(app, /function renderSectionProgress/);
+  assert.match(app, /function bindResearchAtlas/);
+  assert.match(app, /function bindSectionProgress/);
+  assert.match(app, /IntersectionObserver/);
+  assert.match(app, /requestAnimationFrame/);
 });

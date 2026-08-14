@@ -43,6 +43,12 @@ test("visual contract includes responsive, focus, and reduced-motion rules", asy
   assert.match(css, /min-height:\s*44px/);
   assert.match(css, /\.profile-rail\s*\{[^}]*position:\s*fixed/s);
   assert.match(css, /height:\s*100dvh/);
+  assert.match(css, /\.research-atlas/);
+  assert.match(css, /\.atlas-node\.is-active/);
+  assert.match(css, /\.section-progress/);
+  assert.match(css, /\.reveal-section\.is-visible/);
+  assert.match(css, /\.paper-row:hover/);
+  assert.match(css, /\.project-entry:hover/);
 });
 
 test("application renders demo actions without navigable paper or project links", async () => {

@@ -25,6 +25,7 @@ mkdirSync(output, { recursive: true });
 
     if ((await page.locator("#profile-name").innerText()) !== "Xuanchen Lu") throw new Error(`${name}: missing name`);
     if ((await page.locator("#research-list .research-feature").count()) !== 4) throw new Error(`${name}: wrong research count`);
+    if ((await page.locator("[data-atlas-key]").count()) !== 4) throw new Error(`${name}: wrong atlas node count`);
     if ((await page.locator("#experience-list .experience-row").count()) !== 3) throw new Error(`${name}: wrong experience count`);
     if ((await page.locator("#paper-list .paper-row").count()) !== 8) throw new Error(`${name}: wrong paper count`);
     if ((await page.locator("#project-list .project-entry").count()) !== 4) throw new Error(`${name}: wrong project count`);
@@ -42,9 +43,18 @@ mkdirSync(output, { recursive: true });
       if (!beforeScroll || !afterScroll || beforeScroll.y !== afterScroll.y) throw new Error("desktop: profile rail moved while scrolling");
       if (afterScroll.height > height) throw new Error("desktop: profile rail exceeds viewport height");
       await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForTimeout(100);
+      if ((await page.locator('[data-section-target="research"]').getAttribute("aria-current")) !== "true") throw new Error("desktop: initial progress is missing");
+      await page.locator('[data-research-key="llm-scaling"]').hover();
+      if (!(await page.locator('[data-atlas-key="llm-scaling"]').evaluate((node) => node.classList.contains("is-active")))) throw new Error("desktop: atlas linkage failed");
+      if ((await page.locator('[data-atlas-key="llm-scaling"]').evaluate((node) => getComputedStyle(node).transform)) === "none") throw new Error("desktop: atlas active motion is blocked");
+      await page.locator("#papers").scrollIntoViewIfNeeded();
+      await page.waitForTimeout(250);
+      if ((await page.locator('[data-section-target="papers"]').getAttribute("aria-current")) !== "true") throw new Error("desktop: progress did not update");
       await page.getByRole("button", { name: "中文" }).click();
       if ((await page.locator("html").getAttribute("lang")) !== "zh-CN") throw new Error("language attribute not updated");
       if ((await page.locator("#research-section-title").innerText()) !== "研究方向") throw new Error("Chinese copy not rendered");
+      if ((await page.locator("#section-progress").getAttribute("aria-label")) !== "页面章节") throw new Error("Chinese navigation label not rendered");
       if (!(await page.locator('meta[name="description"]').getAttribute("content")).includes("中英双语虚拟个人主页")) throw new Error("translated meta description not applied");
       if (!(await page.locator('meta[property="og:description"]').getAttribute("content")).includes("中英双语虚拟个人主页")) throw new Error("translated Open Graph description not applied");
       if ((await page.evaluate(() => localStorage.getItem("redawn7-locale-v2"))) !== "zh") throw new Error("locale not persisted");
@@ -70,6 +80,16 @@ mkdirSync(output, { recursive: true });
   await accessibility.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
   if (!(await accessibility.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth))) throw new Error("200% text zoom causes horizontal overflow");
   await accessibility.close();
+
+  const reducedMotion = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  await reducedMotion.emulateMedia({ reducedMotion: "reduce" });
+  await reducedMotion.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+  const revealStyle = await reducedMotion.locator("#papers").evaluate((element) => {
+    const style = getComputedStyle(element);
+    return { opacity: style.opacity, transform: style.transform };
+  });
+  if (revealStyle.opacity !== "1" || revealStyle.transform !== "none") throw new Error("reduced motion: reveal content is still spatially animated");
+  await reducedMotion.close();
 
   await browser.close();
   if (errors.length) throw new Error(errors.join("\n"));

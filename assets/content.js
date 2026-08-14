@@ -88,6 +88,7 @@ export const content = {
       description: "Xuanchen Lu's bilingual fictional personal homepage for LLM scaling, inference-time compute, market microstructure, quantum gravity, papers, and projects.",
     },
     languageLabel: "Choose language",
+    navigationLabel: "Page sections",
     skipLabel: "Skip to work",
     hero: {
       eyebrow: "Personal research index · 2026",
@@ -200,6 +201,7 @@ export const content = {
       description: "陆宣辰的中英双语虚拟个人主页，展示大语言模型尺度定律、推理时扩展、金融市场微观结构、量子引力、论文与项目。",
     },
     languageLabel: "选择语言",
+    navigationLabel: "页面章节",
     skipLabel: "跳转到研究与项目",
     hero: {
       eyebrow: "个人研究索引 · 2026",

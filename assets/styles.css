@@ -767,7 +767,7 @@ h2 {
 }
 
 .is-ready .atlas-node {
-  animation: atlas-node-enter 560ms var(--ease-out) both;
+  animation: atlas-node-enter 560ms var(--ease-out) backwards;
 }
 
 .is-ready .atlas-node:nth-child(1) { animation-delay: 190ms; }

@@ -1,5 +1,5 @@
-import { content } from "./content.js?v=20260814-4";
-import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-4";
+import { content } from "./content.js?v=20260814-5";
+import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-5";
 
 const byId = (id) => document.getElementById(id);
 let atlasController = null;
@@ -79,10 +79,12 @@ function renderAtlas(items) {
 }
 
 function renderSectionProgress(items) {
+  const currentTarget = document.querySelector("[data-section-target][aria-current='true']")?.dataset.sectionTarget ?? "research";
   const links = items.map((item, index) => {
     const link = document.createElement("a");
     link.href = `#${item.target}`;
     link.dataset.sectionTarget = item.target;
+    if (item.target === currentTarget) link.setAttribute("aria-current", "true");
     link.append(
       textElement("span", "progress-number", String(index + 1).padStart(2, "0")),
       textElement("span", "progress-label", item.label),
@@ -256,6 +258,7 @@ function applyLocale(locale, { persist = true } = {}) {
 
   const switcher = document.querySelector("[data-language-switch]");
   switcher.setAttribute("aria-label", page.languageLabel);
+  byId("section-progress").setAttribute("aria-label", page.navigationLabel);
   for (const button of switcher.querySelectorAll("button")) {
     const active = button.dataset.locale === locale;
     button.classList.toggle("is-active", active);

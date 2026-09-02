@@ -1,5 +1,5 @@
-import { content } from "./content.js?v=20260814-6";
-import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260814-6";
+import { content } from "./content.js?v=20260902-1";
+import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260902-1";
 
 const byId = (id) => document.getElementById(id);
 let atlasController = null;

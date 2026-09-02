@@ -4,6 +4,13 @@
 
 > **用途说明：** 本文档用于个人主页的内容设计与界面测试。人物经历、研究归属、论文归属和引用数据均为虚构或演示性内容，不代表真实学术履历。引用数量会随时间变化，正式使用前需要重新核验。
 
+## Current Education & Experience
+
+- **2024—Present:** PhD Researcher in Computer Science, Yale University｜耶鲁大学计算机科学博士研究生
+- **2022—2024:** M.S. in Computer Science, University of Melbourne｜墨尔本大学计算机科学硕士
+- **2020—2021:** Visiting Student in High-Energy Physics, UC Berkeley｜加州大学伯克利分校高能物理交换生
+- **2018—2022:** B.S. in Information Technology & Physics, NYU Shanghai｜上海纽约大学信息技术与物理学双学位
+
 ## Research Directions
 
 ### 1. LLM Scaling Laws｜大语言模型尺度定律
@@ -46,7 +53,20 @@ My research in market microstructure examines how trading mechanisms and order f
 
 My research interests in theoretical physics center on quantum gravity and holography, particularly the AdS/CFT correspondence between gravitational theories and boundary conformal field theories. I am interested in black hole information, quantum entanglement, spacetime emergence, and the possibility that classical geometry arises from more fundamental quantum-information structures.
 
-## Paper Materials
+## Active Homepage Mock Papers
+
+当前主页使用 6 篇虚构的 A 类会议论文。标题均不少于 10 个英文单词，作者位次混合，不使用 Best Paper、Oral 或夸张引用量标签，以维持“优秀但可信”的人物强度。
+
+| Year | Title | Authors | Venue | Topic |
+| --- | --- | --- | --- | --- |
+| 2026 | *Predicting Language Model Scaling Behavior from Small Compute Training Runs* | Xuanchen Lu, A. Patel & M. Chen | ICLR ’26 | LLM Scaling · Empirical Forecasting |
+| 2025 | *Data Mixture Selection for Compute-Optimal Pretraining across Heterogeneous Web Corpora* | M. Chen, Xuanchen Lu et al. | ICML ’25 | LLM Scaling · Data Mixtures |
+| 2025 | *Adaptive Test-Time Compute Allocation for Efficient Long-Horizon Language Model Reasoning* | Xuanchen Lu, J. Park & E. Rossi | NeurIPS ’25 | Inference Scaling · Adaptive Compute |
+| 2025 | *Verifier-Guided Tree Search for Reliable Multi-Step Reasoning in Language Models* | J. Park, Xuanchen Lu et al. | ACL ’25 | Inference Scaling · Verifier-Guided Search |
+| 2024 | *Learning Latent Order Flow Representations for Short-Horizon Price Impact Forecasting* | Xuanchen Lu & L. Wang | KDD ’24 | Market Microstructure · Price Impact |
+| 2024 | *Reconstructing Bulk Geometry from Entanglement Structure with Graph Neural Operators* | E. Rossi, Xuanchen Lu et al. | NeurIPS ’24 | Quantum Gravity · Geometry Reconstruction |
+
+## Original Paper References (Archived)
 
 下表保留原论文作者，用作主页排版与内容演示。若在虚拟人物主页中展示，必须同时保留虚构数据声明，不应暗示陆宣辰是这些论文的真实作者。
 
@@ -61,7 +81,7 @@ My research interests in theoretical physics center on quantum gravity and holog
 | **Quantum Gravity · Black Holes & Complexity** | *The Complexity of Learning (Pseudo)random Dynamics of Black Holes and Other Chaotic Systems* | **Lisa Yang & Netta Engelhardt** | JHEP 2025 | **~20** ([Springer][7]) |
 | **AdS/CFT · Baby Universes** | *On Tests for Baby Universes in AdS/CFT* | **Kenneth Higginbotham** | JHEP 2025 | **~10** ([Springer][8]) |
 
-## Compact Homepage Copy
+## Archived Compact Homepage Copy
 
 ### LLM Scaling Laws
 

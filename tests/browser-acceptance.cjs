@@ -26,7 +26,7 @@ mkdirSync(output, { recursive: true });
     if ((await page.locator("#profile-name").innerText()) !== "Xuanchen Lu") throw new Error(`${name}: missing name`);
     if ((await page.locator("#research-list .research-feature").count()) !== 4) throw new Error(`${name}: wrong research count`);
     if ((await page.locator("[data-atlas-key]").count()) !== 4) throw new Error(`${name}: wrong atlas node count`);
-    if ((await page.locator("#experience-list .experience-row").count()) !== 3) throw new Error(`${name}: wrong experience count`);
+    if ((await page.locator("#experience-list .experience-row").count()) !== 4) throw new Error(`${name}: wrong experience count`);
     if ((await page.locator("#paper-list .paper-row").count()) !== 8) throw new Error(`${name}: wrong paper count`);
     if ((await page.locator("#project-list .project-entry").count()) !== 4) throw new Error(`${name}: wrong project count`);
     if ((await page.locator("[data-demo-action]").count()) !== 12) throw new Error(`${name}: unsafe demo actions`);
@@ -69,7 +69,7 @@ mkdirSync(output, { recursive: true });
   const fallback = await browser.newPage({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
   await fallback.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
   if ((await fallback.locator("#research-list .research-feature").count()) !== 4) throw new Error("no-JavaScript fallback lost research directions");
-  if ((await fallback.locator("#paper-list .paper-row").count()) !== 8) throw new Error("no-JavaScript fallback lost papers");
+  if ((await fallback.locator("#paper-list .paper-row").count()) !== 6) throw new Error("no-JavaScript fallback lost papers");
   if (!(await fallback.locator("#demo-disclosure").isVisible())) throw new Error("no-JavaScript fallback lost disclosure");
   await fallback.close();
 

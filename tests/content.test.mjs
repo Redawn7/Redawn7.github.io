@@ -10,9 +10,6 @@ const requiredProfile = [
   "department",
   "location",
   "bio",
-  "focus",
-  "nowLabel",
-  "now",
 ];
 
 test("Chinese and English content expose the same complete shape", () => {
@@ -20,9 +17,7 @@ test("Chinese and English content expose the same complete shape", () => {
     const page = content[locale];
     assert.ok(page, `missing ${locale} content`);
     for (const key of requiredProfile) assert.ok(page.profile[key], `${locale}.profile.${key}`);
-    assert.ok(page.hero.eyebrow, `${locale}.hero.eyebrow`);
-    assert.ok(page.hero.title, `${locale}.hero.title`);
-    assert.ok(page.hero.description, `${locale}.hero.description`);
+    assert.ok(page.atlasTitle, `${locale}.atlasTitle`);
     assert.equal(page.atlas.length, 4, `${locale}.atlas`);
     assert.equal(page.navigation.length, 5, `${locale}.navigation`);
     for (const key of ["research", "experience", "papers", "projects", "interests"]) {
@@ -33,6 +28,11 @@ test("Chinese and English content expose the same complete shape", () => {
     assert.deepEqual(page.atlas.map((item) => item.key), page.research.map((item) => item.key));
     assert.equal(page.experience.length, 4);
     assert.equal(page.papers.length, 6);
+    assert.ok(page.publicationsToggle.expand);
+    assert.ok(page.publicationsToggle.collapse);
+    assert.ok(page.collaboration.title);
+    assert.ok(page.collaboration.description);
+    assert.equal(page.collaboration.links.length, 2);
     assert.equal(page.projects.length, 4);
     assert.ok(page.interests.length >= 4);
     assert.ok(page.disclosure.length > 40);
@@ -55,6 +55,7 @@ test("the mock profile uses the approved interdisciplinary identity", () => {
       assert.ok(direction.kicker);
       assert.ok(direction.title);
       assert.ok(direction.description);
+      assert.ok(direction.question);
     }
   }
 });
@@ -70,7 +71,8 @@ test("fictional paper selections form a plausible six-paper A-tier conference re
   for (const locale of ["en", "zh"]) {
     for (const paper of content[locale].papers) {
       assert.ok(paper.authors);
-      assert.ok(paper.citation);
+      assert.ok(paper.role);
+      assert.ok(paper.contribution);
       assert.match(paper.authors, /Xuanchen Lu/);
       assert.ok(paper.title.split(/\s+/).length >= 10, `${paper.title} is too short`);
     }
@@ -84,6 +86,22 @@ test("fictional experience follows the approved international education path", (
   assert.match(experience, /UC Berkeley/);
   assert.match(experience, /NYU Shanghai/);
   assert.match(experience, /Information Technology.*Physics/);
+  for (const locale of ["en", "zh"]) {
+    for (const item of content[locale].experience) assert.ok(item.focus);
+    assert.equal(content[locale].experience.filter((item) => item.kind === "exchange").length, 1);
+  }
+});
+
+test("profile links and collaboration invitation use only verified destinations", () => {
+  for (const locale of ["en", "zh"]) {
+    const page = content[locale];
+    assert.equal(page.contacts.length, 2);
+    assert.ok(page.contacts.every((contact) => /^https:\/\//.test(contact.href)));
+    assert.deepEqual(
+      page.collaboration.links.map((link) => link.href),
+      page.contacts.map((contact) => contact.href),
+    );
+  }
 });
 
 test("demo records cannot navigate to unrelated sources", () => {

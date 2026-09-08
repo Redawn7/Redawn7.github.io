@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://redawn7.github.io/">
     <link rel="canonical" href="https://redawn7.github.io/">
     <link rel="icon" href="./assets/avatar.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./assets/styles.css?v=20260902-1">
+    <link rel="stylesheet" href="./assets/styles.css?v=20260904-1">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -28,7 +28,7 @@
         }
       }
     </script>
-    <script type="module" src="./assets/app.js?v=20260902-1"></script>
+    <script type="module" src="./assets/app.js?v=20260904-1"></script>
   </head>
   <body>
     <a class="skip-link" href="#work" id="skip-link">Skip to work</a>
@@ -45,25 +45,12 @@
             <p class="location" id="profile-location">Based between New Haven &amp; Chiang Mai</p>
           </div>
 
-          <p class="bio" id="profile-bio">I study how intelligence, markets, and spacetime scale. My work moves between large language models, high-frequency markets, and quantum gravity.</p>
-          <ul class="focus-list" id="focus-list" aria-label="Research focus">
-            <li>LLM Scaling</li>
-            <li>Inference-time Compute</li>
-            <li>Market Microstructure</li>
-            <li>AdS/CFT</li>
-          </ul>
+          <p class="bio" id="profile-bio">I study how intelligence, markets, and spacetime scale—moving between language models, high-frequency finance, and quantum gravity.</p>
 
           <nav class="contact-links" id="contact-links" aria-label="Profile links">
             <a href="https://github.com/Redawn7" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
             <a href="https://cs.yale.edu/" target="_blank" rel="noreferrer">Scholar <span aria-hidden="true">↗</span></a>
-            <span aria-disabled="true">Email</span>
-            <span aria-disabled="true">CV</span>
           </nav>
-
-          <div class="now-note">
-            <p class="micro-label" id="now-label">Now</p>
-            <p id="now-text">Building a predictive research agenda across model scaling, reasoning compute, market dynamics, and holographic physics.</p>
-          </div>
 
           <nav class="section-progress" id="section-progress" aria-label="Page sections">
             <a href="#research" data-section-target="research" aria-current="true"><span class="progress-number">01</span><span class="progress-label">Research Atlas</span></a>
@@ -79,7 +66,7 @@
         <section class="indexed-section reveal-section" id="research" aria-labelledby="research-section-title">
           <header class="section-key">
             <span id="research-number">01</span>
-            <h3 id="research-section-title">Research</h3>
+            <h2 id="research-section-title">Research</h2>
           </header>
           <div class="research-toolbar">
             <div class="language-switch" data-language-switch role="group" aria-label="Choose language">
@@ -90,104 +77,116 @@
           <div class="research-atlas" id="research-atlas" aria-labelledby="atlas-title">
             <p class="visually-hidden" id="atlas-title">Interactive research atlas</p>
             <svg class="atlas-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <ellipse cx="54" cy="48" rx="22" ry="25"></ellipse>
-              <line x1="12" y1="30" x2="38" y2="68"></line>
-              <line x1="38" y1="68" x2="65" y2="22"></line>
-              <line x1="65" y1="22" x2="82" y2="72"></line>
+              <ellipse cx="54" cy="48" rx="22" ry="25" data-atlas-line="spacetime"></ellipse>
+              <line x1="12" y1="30" x2="38" y2="68" data-atlas-line="llm-scaling"></line>
+              <line x1="38" y1="68" x2="65" y2="22" data-atlas-line="inference"></line>
+              <line x1="65" y1="22" x2="82" y2="72" data-atlas-line="markets"></line>
             </svg>
             <div class="atlas-nodes" id="atlas-nodes">
-              <button class="atlas-node atlas-node--llm-scaling" type="button" data-atlas-key="llm-scaling" aria-label="Explore LLM Scaling Laws"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">LLM Scale</span></button>
-              <button class="atlas-node atlas-node--inference" type="button" data-atlas-key="inference" aria-label="Explore Inference-time Scaling"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Inference</span></button>
-              <button class="atlas-node atlas-node--markets" type="button" data-atlas-key="markets" aria-label="Explore Market Microstructure"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Markets</span></button>
-              <button class="atlas-node atlas-node--spacetime" type="button" data-atlas-key="spacetime" aria-label="Explore AdS/CFT and Quantum Gravity"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Spacetime</span></button>
+              <a class="atlas-node atlas-node--llm-scaling" href="#research-llm-scaling" data-atlas-key="llm-scaling" aria-label="Explore LLM Scaling Laws"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">LLM Scale</span></a>
+              <a class="atlas-node atlas-node--inference" href="#research-inference" data-atlas-key="inference" aria-label="Explore Inference-time Scaling"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Inference</span></a>
+              <a class="atlas-node atlas-node--markets" href="#research-markets" data-atlas-key="markets" aria-label="Explore Market Microstructure"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Markets</span></a>
+              <a class="atlas-node atlas-node--spacetime" href="#research-spacetime" data-atlas-key="spacetime" aria-label="Explore AdS/CFT and Quantum Gravity"><span class="atlas-dot" aria-hidden="true"></span><span class="atlas-label">Spacetime</span></a>
             </div>
           </div>
           <div class="research-list" id="research-list">
-            <article class="research-feature" data-research-key="llm-scaling" tabindex="0"><p class="research-index">01</p><p class="micro-label">LLM Scaling Laws</p><h4>Predictive scaling frameworks for large language models</h4><p class="research-description">Performance scaling across parameters, data, and compute, with an emphasis on compute-optimal training, data-parameter allocation, and emergent capabilities.</p></article>
-            <article class="research-feature" data-research-key="inference" tabindex="0"><p class="research-index">02</p><p class="micro-label">Inference-time Scaling</p><h4>Adaptive test-time compute for reasoning systems</h4><p class="research-description">Long-horizon reasoning, Best-of-N sampling, search, verifier-based methods, adaptive compute allocation, and the overthinking problem.</p></article>
-            <article class="research-feature" data-research-key="markets" tabindex="0"><p class="research-index">03</p><p class="micro-label">Market Microstructure</p><h4>Order flow, liquidity, and short-horizon price formation</h4><p class="research-description">Limit order books, bid-ask spreads, price impact, informed trading, and abnormal behavior in high-frequency market data.</p></article>
-            <article class="research-feature" data-research-key="spacetime" tabindex="0"><p class="research-index">04</p><p class="micro-label">AdS/CFT &amp; Quantum Gravity</p><h4>Spacetime emergence from quantum information</h4><p class="research-description">Holography, black hole information, quantum entanglement, and the possibility that classical geometry arises from deeper information structures.</p></article>
+            <article class="research-feature" id="research-llm-scaling" data-research-key="llm-scaling" tabindex="-1"><p class="research-index">01</p><p class="micro-label">LLM Scaling Laws</p><h3>Predictive scaling frameworks for large language models</h3><p class="research-description">Performance scaling across parameters, data, and compute, with an emphasis on compute-optimal training, data-parameter allocation, and emergent capabilities.</p><p class="research-question">Can small training runs reliably forecast the limits of much larger models?</p></article>
+            <article class="research-feature" id="research-inference" data-research-key="inference" tabindex="-1"><p class="research-index">02</p><p class="micro-label">Inference-time Scaling</p><h3>Adaptive test-time compute for reasoning systems</h3><p class="research-description">Long-horizon reasoning, Best-of-N sampling, search, verifier-based methods, adaptive compute allocation, and the overthinking problem.</p><p class="research-question">When should a model keep thinking—and when should it stop?</p></article>
+            <article class="research-feature" id="research-markets" data-research-key="markets" tabindex="-1"><p class="research-index">03</p><p class="micro-label">Market Microstructure</p><h3>Order flow, liquidity, and short-horizon price formation</h3><p class="research-description">Limit order books, bid-ask spreads, price impact, informed trading, and abnormal behavior in high-frequency market data.</p><p class="research-question">Which order-flow patterns reveal information before prices move?</p></article>
+            <article class="research-feature" id="research-spacetime" data-research-key="spacetime" tabindex="-1"><p class="research-index">04</p><p class="micro-label">AdS/CFT &amp; Quantum Gravity</p><h3>Spacetime emergence from quantum information</h3><p class="research-description">Holography, black hole information, quantum entanglement, and the possibility that classical geometry arises from deeper information structures.</p><p class="research-question">Can classical geometry be recovered from patterns of quantum entanglement?</p></article>
           </div>
         </section>
 
         <section class="indexed-section reveal-section" id="experience" aria-labelledby="experience-section-title">
           <header class="section-key">
             <span id="experience-number">02</span>
-            <h3 id="experience-section-title">Experience</h3>
+            <h2 id="experience-section-title">Experience</h2>
           </header>
-          <div class="experience-list" id="experience-list">
-            <article class="experience-row"><p class="record-year">2024—Present</p><h4>PhD Researcher in Computer Science, Yale University</h4></article>
-            <article class="experience-row"><p class="record-year">2022—2024</p><h4>M.S. in Computer Science, University of Melbourne</h4></article>
-            <article class="experience-row"><p class="record-year">2020—2021</p><h4>Visiting Student in High-Energy Physics, UC Berkeley</h4></article>
-            <article class="experience-row"><p class="record-year">2018—2022</p><h4>B.S. in Information Technology &amp; Physics, NYU Shanghai</h4></article>
+          <div class="experience-list experience-timeline" id="experience-list">
+            <article class="experience-row"><p class="record-year">2024—Present</p><div><h3>PhD Researcher in Computer Science, Yale University</h3><p class="experience-focus">Learning systems, reasoning, and interdisciplinary theory</p></div></article>
+            <article class="experience-row"><p class="record-year">2022—2024</p><div><h3>M.S. in Computer Science, University of Melbourne</h3><p class="experience-focus">Machine learning systems and quantitative methods</p></div></article>
+            <article class="experience-row"><p class="record-year">2018—2022</p><div><h3>B.S. in Information Technology &amp; Physics, NYU Shanghai</h3><p class="experience-focus">A dual foundation in computation and theoretical physics</p>
+              <article class="experience-row experience-row--exchange"><p class="record-year">2020—2021</p><div><h3>Visiting Student in High-Energy Physics, UC Berkeley</h3><p class="experience-focus">Quantum field theory and high-energy physics</p></div></article>
+            </div></article>
           </div>
         </section>
 
         <section class="indexed-section reveal-section" id="papers" aria-labelledby="papers-section-title">
           <header class="section-key">
             <span id="papers-number">03</span>
-            <h3 id="papers-section-title">Selected Papers</h3>
+            <h2 id="papers-section-title">Selected Papers</h2>
           </header>
           <div class="paper-list" id="paper-list">
             <article class="paper-row">
               <p class="record-year">2026</p>
-              <div class="record-body"><h4>Predicting Language Model Scaling Behavior from Small Compute Training Runs</h4><p>Xuanchen Lu, A. Patel &amp; M. Chen · ICLR '26</p><p class="record-topic">LLM Scaling · Empirical Forecasting</p></div>
-              <span class="demo-action" aria-disabled="true">Conference paper</span>
+              <div class="record-body"><h3>Predicting Language Model Scaling Behavior from Small Compute Training Runs</h3><p>Xuanchen Lu, A. Patel &amp; M. Chen · ICLR '26</p><p class="record-contribution">Introduces a small-run extrapolation protocol for forecasting compute-performance frontiers.</p><p class="record-topic">LLM Scaling · Empirical Forecasting</p></div>
+              <span class="paper-role">Lead author</span>
             </article>
             <article class="paper-row">
               <p class="record-year">2025</p>
-              <div class="record-body"><h4>Data Mixture Selection for Compute-Optimal Pretraining across Heterogeneous Web Corpora</h4><p>M. Chen, Xuanchen Lu et al. · ICML '25</p><p class="record-topic">LLM Scaling · Data Mixtures</p></div>
-              <span class="demo-action" aria-disabled="true">Conference paper</span>
+              <div class="record-body"><h3>Data Mixture Selection for Compute-Optimal Pretraining across Heterogeneous Web Corpora</h3><p>M. Chen, Xuanchen Lu et al. · ICML '25</p><p class="record-contribution">Studies how heterogeneous data mixtures alter compute-optimal pretraining behavior.</p><p class="record-topic">LLM Scaling · Data Mixtures</p></div>
+              <span class="paper-role">Co-author</span>
             </article>
             <article class="paper-row">
               <p class="record-year">2025</p>
-              <div class="record-body"><h4>Adaptive Test-Time Compute Allocation for Efficient Long-Horizon Language Model Reasoning</h4><p>Xuanchen Lu, J. Park &amp; E. Rossi · NeurIPS '25</p><p class="record-topic">Inference Scaling · Adaptive Compute</p></div>
-              <span class="demo-action" aria-disabled="true">Conference paper</span>
+              <div class="record-body"><h3>Adaptive Test-Time Compute Allocation for Efficient Long-Horizon Language Model Reasoning</h3><p>Xuanchen Lu, J. Park &amp; E. Rossi · NeurIPS '25</p><p class="record-contribution">Allocates test-time computation dynamically according to estimated problem difficulty.</p><p class="record-topic">Inference Scaling · Adaptive Compute</p></div>
+              <span class="paper-role">Lead author</span>
             </article>
-            <article class="paper-row">
+            <article class="paper-row paper-row--secondary">
               <p class="record-year">2025</p>
-              <div class="record-body"><h4>Verifier-Guided Tree Search for Reliable Multi-Step Reasoning in Language Models</h4><p>J. Park, Xuanchen Lu et al. · ACL '25</p><p class="record-topic">Inference Scaling · Verifier-Guided Search</p></div>
-              <span class="demo-action" aria-disabled="true">Conference paper</span>
+              <div class="record-body"><h3>Verifier-Guided Tree Search for Reliable Multi-Step Reasoning in Language Models</h3><p>J. Park, Xuanchen Lu et al. · ACL '25</p><p class="record-contribution">Combines verifier feedback with tree search to improve multi-step reasoning reliability.</p><p class="record-topic">Inference Scaling · Verifier-Guided Search</p></div>
+              <span class="paper-role">Co-author</span>
             </article>
-            <article class="paper-row">
+            <article class="paper-row paper-row--secondary">
               <p class="record-year">2024</p>
-              <div class="record-body"><h4>Learning Latent Order Flow Representations for Short-Horizon Price Impact Forecasting</h4><p>Xuanchen Lu &amp; L. Wang · KDD '24</p><p class="record-topic">Market Microstructure · Price Impact</p></div>
-              <span class="demo-action" aria-disabled="true">Conference paper</span>
+              <div class="record-body"><h3>Learning Latent Order Flow Representations for Short-Horizon Price Impact Forecasting</h3><p>Xuanchen Lu &amp; L. Wang · KDD '24</p><p class="record-contribution">Learns compact order-flow states for short-horizon price-impact forecasting.</p><p class="record-topic">Market Microstructure · Price Impact</p></div>
+              <span class="paper-role">Lead author</span>
             </article>
-            <article class="paper-row">
+            <article class="paper-row paper-row--secondary">
               <p class="record-year">2024</p>
-              <div class="record-body"><h4>Reconstructing Bulk Geometry from Entanglement Structure with Graph Neural Operators</h4><p>E. Rossi, Xuanchen Lu et al. · NeurIPS '24</p><p class="record-topic">Quantum Gravity · Geometry Reconstruction</p></div>
-              <span class="demo-action" aria-disabled="true">Conference paper</span>
+              <div class="record-body"><h3>Reconstructing Bulk Geometry from Entanglement Structure with Graph Neural Operators</h3><p>E. Rossi, Xuanchen Lu et al. · NeurIPS '24</p><p class="record-contribution">Explores neural reconstruction of bulk geometry from boundary entanglement structure.</p><p class="record-topic">Quantum Gravity · Geometry Reconstruction</p></div>
+              <span class="paper-role">Co-author</span>
             </article>
           </div>
+          <button class="publications-toggle" id="publications-toggle" type="button" aria-expanded="false" aria-controls="paper-list">View all 6 publications <span aria-hidden="true">↓</span></button>
         </section>
 
         <section class="indexed-section reveal-section" id="projects" aria-labelledby="projects-section-title">
           <header class="section-key">
             <span id="projects-number">04</span>
-            <h3 id="projects-section-title">Projects</h3>
+            <h2 id="projects-section-title">Projects</h2>
           </header>
           <div class="project-list" id="project-list">
-            <article class="project-entry"><p class="micro-label">AI Product</p><h4>Creator Evidence Wiki</h4><p>A local-first workspace that turns creator videos into timestamped, traceable knowledge.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
-            <article class="project-entry"><p class="micro-label">Research Tool</p><h4>PaperLens</h4><p>An evidence-aware reading environment for comparing claims, methods, and citations across papers.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
-            <article class="project-entry"><p class="micro-label">Open Source</p><h4>AgentScope</h4><p>A lightweight evaluation toolkit for inspecting how research agents plan, retrieve, and justify decisions.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
-            <article class="project-entry"><p class="micro-label">Experiment</p><h4>Small Models, Clear Reasons</h4><p>Notes and prototypes exploring compact models, transparent interfaces, and human-in-the-loop AI.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
+            <article class="project-entry"><p class="micro-label">AI Product</p><h3>Creator Evidence Wiki</h3><p>A local-first workspace that turns creator videos into timestamped, traceable knowledge.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
+            <article class="project-entry"><p class="micro-label">Research Tool</p><h3>PaperLens</h3><p>An evidence-aware reading environment for comparing claims, methods, and citations across papers.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
+            <article class="project-entry"><p class="micro-label">Open Source</p><h3>AgentScope</h3><p>A lightweight evaluation toolkit for inspecting how research agents plan, retrieve, and justify decisions.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
+            <article class="project-entry"><p class="micro-label">Experiment</p><h3>Small Models, Clear Reasons</h3><p>Notes and prototypes exploring compact models, transparent interfaces, and human-in-the-loop AI.</p><span class="demo-action" aria-disabled="true">Demo project</span></article>
           </div>
         </section>
 
         <section class="indexed-section reveal-section" id="interests" aria-labelledby="interests-section-title">
           <header class="section-key">
             <span id="interests-number">05</span>
-            <h3 id="interests-section-title">Beyond Work</h3>
+            <h2 id="interests-section-title">Beyond Work</h2>
           </header>
           <ul class="interest-list" id="interest-list">
             <li>Photography</li><li>Long walks</li><li>Reading</li><li>Independent building</li><li>Coffee &amp; conversations</li>
           </ul>
         </section>
 
+        <section class="collaboration" id="collaboration" aria-labelledby="collaboration-title">
+          <p class="micro-label" id="collaboration-eyebrow">Open thread</p>
+          <h2 id="collaboration-title">Let unlikely ideas share a table.</h2>
+          <p id="collaboration-description">I welcome research conversations that connect model behavior, market dynamics, and the information structure of physical systems.</p>
+          <nav class="collaboration-links" id="collaboration-links" aria-label="Collaboration links">
+            <a href="https://github.com/Redawn7" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://cs.yale.edu/" target="_blank" rel="noreferrer">Scholar <span aria-hidden="true">↗</span></a>
+          </nav>
+        </section>
+
         <aside class="demo-disclosure" id="demo-disclosure" aria-labelledby="disclosure-label">
           <p class="micro-label" id="disclosure-label">Demo notice</p>
-          <p id="disclosure-text">This is a fictional personal-brand prototype. Biographical details, affiliations, research directions, paper selections, citation labels, and projects are fictional placeholders for interface testing and do not represent verified academic or professional claims.</p>
+          <p id="disclosure-text">This is a fictional personal-brand prototype. Biographical details, affiliations, research directions, paper selections, author roles, and projects are fictional placeholders for interface testing and do not represent verified academic or professional claims.</p>
         </aside>
 
         <footer class="site-footer"><p id="footer-text">Designed as a quiet index of ideas and work.</p><p>© <span id="year">2026</span> Xuanchen Lu</p></footer>

@@ -17,13 +17,27 @@ test("document contains the complete semantic personal homepage", async () => {
   assert.match(html, /id="research-atlas"/);
   assert.match(html, /class="atlas-connections"/);
   assert.equal((html.match(/<line /g) ?? []).length, 3);
+  assert.equal((html.match(/data-atlas-line=/g) ?? []).length, 4);
   assert.equal((html.match(/data-atlas-key=/g) ?? []).length, 4);
   assert.equal((html.match(/data-research-key=/g) ?? []).length, 4);
+  assert.equal((html.match(/class="atlas-node /g) ?? []).length, 4);
+  for (const key of ["llm-scaling", "inference", "markets", "spacetime"]) {
+    assert.match(html, new RegExp(`href="#research-${key}"`));
+    assert.match(html, new RegExp(`id="research-${key}"`));
+  }
   assert.match(html, /class="section-progress"/);
   assert.equal((html.match(/data-section-target=/g) ?? []).length, 5);
   for (const id of ["research", "experience", "papers", "projects", "interests", "demo-disclosure"]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
+  assert.equal((html.match(/<h2 id="[^"]+-section-title"/g) ?? []).length, 5);
+  assert.doesNotMatch(html, /<h3 id="[^"]+-section-title"/);
+  assert.match(html, /class="experience-list experience-timeline"/);
+  assert.match(html, /experience-row--exchange/);
+  assert.match(html, /id="publications-toggle"/);
+  assert.match(html, /aria-expanded="false"/);
+  assert.match(html, /id="collaboration"/);
+  assert.doesNotMatch(html, /aria-disabled="true">(?:Email|CV)/);
   assert.match(html, /fictional placeholders/i);
 });
 
@@ -50,11 +64,16 @@ test("visual contract includes responsive, focus, and reduced-motion rules", asy
   assert.match(css, /\.atlas-connections/);
   assert.match(css, /#research\s*\{[^}]*position:\s*relative/s);
   assert.match(css, /\.research-toolbar\s*\{[^}]*position:\s*absolute[^}]*inset-block-start:\s*0\.5rem[^}]*inset-inline-end:\s*0/s);
-  assert.match(css, /\.language-switch button\s*\{[^}]*min-height:\s*26px[^}]*font-size:\s*0\.58rem/s);
+  assert.match(css, /\.language-switch button\s*\{[^}]*min-height:\s*44px[^}]*font-size:\s*0\.58rem/s);
   assert.match(css, /\.atlas-node\.is-active/);
+  assert.match(css, /\[data-atlas-line\]\.is-active/);
   assert.match(css, /\.section-progress/);
   assert.match(css, /\.section-key span\s*\{[^}]*font-size:\s*0\.9rem/s);
-  assert.match(css, /\.section-key h3\s*\{[^}]*font-size:\s*1rem/s);
+  assert.match(css, /\.section-key h2\s*\{[^}]*font-size:\s*1rem/s);
+  assert.match(css, /scroll-margin-top/);
+  assert.match(css, /scroll-snap-type:\s*x proximity/);
+  assert.match(css, /\.experience-timeline/);
+  assert.match(css, /\.js \.paper-list:not\(\.is-expanded\) \.paper-row--secondary/);
   assert.match(css, /\.reveal-section\.is-visible/);
   assert.match(css, /\.paper-row:hover/);
   assert.match(css, /\.project-entry:hover/);
@@ -68,6 +87,7 @@ test("application renders demo actions without navigable paper or project links"
   assert.match(app, /function renderAtlas/);
   assert.match(app, /function renderSectionProgress/);
   assert.match(app, /function bindResearchAtlas/);
+  assert.match(app, /function bindPublicationToggle/);
   assert.match(app, /function bindSectionProgress/);
   assert.match(app, /IntersectionObserver/);
   assert.match(app, /requestAnimationFrame/);

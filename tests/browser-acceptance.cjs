@@ -14,40 +14,46 @@ mkdirSync(output, { recursive: true });
   for (const [name, width, height] of [
     ["mobile", 390, 844],
     ["tablet", 820, 1024],
-    ["desktop", 1440, 1000],
+    ["desktop", 1280, 720],
   ]) {
     const page = await browser.newPage({ viewport: { width, height } });
     page.on("console", (message) => {
       if (message.type() === "error") errors.push(`console:${message.text()}`);
     });
     page.on("pageerror", (error) => errors.push(`pageerror:${error.message}`));
-    await page.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+    await page.goto("http://127.0.0.1:64058/", { waitUntil: "networkidle" });
 
     if ((await page.locator("#profile-name").innerText()) !== "Xuanchen Lu") throw new Error(`${name}: missing name`);
     if ((await page.locator("#research-list .research-feature").count()) !== 4) throw new Error(`${name}: wrong research count`);
     if ((await page.locator("[data-atlas-key]").count()) !== 4) throw new Error(`${name}: wrong atlas node count`);
     if ((await page.locator("#experience-list .experience-row").count()) !== 4) throw new Error(`${name}: wrong experience count`);
-    if ((await page.locator("#paper-list .paper-row").count()) !== 8) throw new Error(`${name}: wrong paper count`);
+    if ((await page.locator("#paper-list .paper-row:visible").count()) !== 3) throw new Error(`${name}: wrong selected paper count`);
+    await page.locator('#publications-toggle').click();
+    if ((await page.locator("#paper-list .paper-row:visible").count()) !== 6) throw new Error(`${name}: expansion failed`);
+    await page.locator('#publications-toggle').click();
     if ((await page.locator("#project-list .project-entry").count()) !== 4) throw new Error(`${name}: wrong project count`);
-    if ((await page.locator("[data-demo-action]").count()) !== 12) throw new Error(`${name}: unsafe demo actions`);
+    if ((await page.locator("[data-demo-action]").count()) !== 4) throw new Error(`${name}: unsafe demo actions`);
     if (!(await page.locator("#demo-disclosure").isVisible())) throw new Error(`${name}: disclosure hidden`);
     if (!(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth))) throw new Error(`${name}: horizontal overflow`);
 
     if (name === "desktop") {
       const rail = page.locator(".profile-rail");
+      if (!(await rail.evaluate(el => el.scrollHeight <= el.clientHeight))) throw new Error('desktop: rail has internal overflow');
       const position = await rail.evaluate((element) => getComputedStyle(element).position);
       if (position !== "fixed") throw new Error("desktop: profile rail is not fixed");
       const beforeScroll = await rail.boundingBox();
-      await page.evaluate(() => window.scrollTo(0, 900));
+      await page.evaluate(() => window.scrollTo({top: 900, behavior: "instant"}));
       const afterScroll = await rail.boundingBox();
       if (!beforeScroll || !afterScroll || beforeScroll.y !== afterScroll.y) throw new Error("desktop: profile rail moved while scrolling");
       if (afterScroll.height > height) throw new Error("desktop: profile rail exceeds viewport height");
-      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.evaluate(() => window.scrollTo({top: 0, behavior: "instant"}));
       await page.waitForTimeout(100);
       if ((await page.locator('[data-section-target="research"]').getAttribute("aria-current")) !== "true") throw new Error("desktop: initial progress is missing");
       await page.locator('[data-research-key="llm-scaling"]').hover();
       if (!(await page.locator('[data-atlas-key="llm-scaling"]').evaluate((node) => node.classList.contains("is-active")))) throw new Error("desktop: atlas linkage failed");
-      if ((await page.locator('[data-atlas-key="llm-scaling"]').evaluate((node) => getComputedStyle(node).transform)) === "none") throw new Error("desktop: atlas active motion is blocked");
+      if (!(await page.locator('[data-atlas-line="llm-scaling"]').evaluate(node => node.classList.contains('is-active')))) throw new Error('desktop: connector linkage failed');
+      await page.locator('[data-atlas-key="llm-scaling"]').click();
+      if (!page.url().endsWith('#research-llm-scaling')) throw new Error('desktop: atlas navigation failed');
       await page.locator("#papers").scrollIntoViewIfNeeded();
       await page.waitForTimeout(250);
       if ((await page.locator('[data-section-target="papers"]').getAttribute("aria-current")) !== "true") throw new Error("desktop: progress did not update");
@@ -67,14 +73,14 @@ mkdirSync(output, { recursive: true });
   }
 
   const fallback = await browser.newPage({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
-  await fallback.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+  await fallback.goto("http://127.0.0.1:64058/", { waitUntil: "networkidle" });
   if ((await fallback.locator("#research-list .research-feature").count()) !== 4) throw new Error("no-JavaScript fallback lost research directions");
   if ((await fallback.locator("#paper-list .paper-row").count()) !== 6) throw new Error("no-JavaScript fallback lost papers");
   if (!(await fallback.locator("#demo-disclosure").isVisible())) throw new Error("no-JavaScript fallback lost disclosure");
   await fallback.close();
 
   const accessibility = await browser.newPage({ viewport: { width: 720, height: 900 } });
-  await accessibility.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+  await accessibility.goto("http://127.0.0.1:64058/", { waitUntil: "networkidle" });
   await accessibility.keyboard.press("Tab");
   if (!(await accessibility.locator("#skip-link").isVisible())) throw new Error("skip link is not keyboard visible");
   await accessibility.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
@@ -83,7 +89,7 @@ mkdirSync(output, { recursive: true });
 
   const reducedMotion = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   await reducedMotion.emulateMedia({ reducedMotion: "reduce" });
-  await reducedMotion.goto("http://127.0.0.1:4173/", { waitUntil: "networkidle" });
+  await reducedMotion.goto("http://127.0.0.1:64058/", { waitUntil: "networkidle" });
   const revealStyle = await reducedMotion.locator("#papers").evaluate((element) => {
     const style = getComputedStyle(element);
     return { opacity: style.opacity, transform: style.transform };

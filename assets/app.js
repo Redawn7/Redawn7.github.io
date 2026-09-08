@@ -1,8 +1,10 @@
-import { content } from "./content.js?v=20260902-1";
+import { content } from "./content.js?v=20260904-1";
 import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260902-1";
 
 const byId = (id) => document.getElementById(id);
 let atlasController = null;
+let publicationsExpanded = false;
+let publicationLabels = content.en.publicationsToggle;
 
 function setText(id, value) {
   const node = byId(id);
@@ -17,25 +19,26 @@ function textElement(tag, className, value) {
 }
 
 function renderSimpleList(targetId, items) {
-  const target = byId(targetId);
-  target.replaceChildren(...items.map((item) => textElement("li", "", item)));
+  byId(targetId).replaceChildren(...items.map((item) => textElement("li", "", item)));
+}
+
+function linkElement(item) {
+  const link = textElement("a", "", `${item.label} ↗`);
+  link.href = item.href;
+  link.target = "_blank";
+  link.rel = "noreferrer";
+  return link;
 }
 
 function renderContacts(items) {
-  const target = byId("contact-links");
-  const nodes = items.map((item) => {
-    if (!item.href) {
-      const label = textElement("span", "", item.label);
-      label.setAttribute("aria-disabled", "true");
-      return label;
-    }
-    const link = textElement("a", "", `${item.label} ↗`);
-    link.href = item.href;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    return link;
-  });
-  target.replaceChildren(...nodes);
+  byId("contact-links").replaceChildren(...items.map(linkElement));
+}
+
+function renderCollaboration(section) {
+  setText("collaboration-eyebrow", section.eyebrow);
+  setText("collaboration-title", section.title);
+  setText("collaboration-description", section.description);
+  byId("collaboration-links").replaceChildren(...section.links.map(linkElement));
 }
 
 function demoAction(label) {
@@ -48,14 +51,16 @@ function demoAction(label) {
 function renderResearch(items) {
   const entries = items.map((direction, index) => {
     const entry = document.createElement("article");
+    entry.id = `research-${direction.key}`;
     entry.className = "research-feature";
     entry.dataset.researchKey = direction.key;
-    entry.tabIndex = 0;
+    entry.tabIndex = -1;
     entry.append(
       textElement("p", "research-index", String(index + 1).padStart(2, "0")),
       textElement("p", "micro-label", direction.kicker),
-      textElement("h4", "", direction.title),
+      textElement("h3", "", direction.title),
       textElement("p", "research-description", direction.description),
+      textElement("p", "research-question", direction.question),
     );
     return entry;
   });
@@ -64,16 +69,16 @@ function renderResearch(items) {
 
 function renderAtlas(items) {
   const nodes = items.map((item) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `atlas-node atlas-node--${item.key}`;
-    button.dataset.atlasKey = item.key;
-    button.setAttribute("aria-label", item.accessibleLabel);
-    button.append(
+    const link = document.createElement("a");
+    link.href = `#research-${item.key}`;
+    link.className = `atlas-node atlas-node--${item.key}`;
+    link.dataset.atlasKey = item.key;
+    link.setAttribute("aria-label", item.accessibleLabel);
+    link.append(
       textElement("span", "atlas-dot", ""),
       textElement("span", "atlas-label", item.label),
     );
-    return button;
+    return link;
   });
   byId("atlas-nodes").replaceChildren(...nodes);
 }
@@ -99,22 +104,30 @@ function bindResearchAtlas() {
   atlasController = new AbortController();
   const { signal } = atlasController;
   const atlas = byId("research-atlas");
-  const targets = [...document.querySelectorAll("[data-atlas-key], [data-research-key]")];
+  const targets = [...document.querySelectorAll("[data-atlas-key], [data-research-key], [data-atlas-line]")];
+  const keyFor = (target) => target.dataset.atlasKey ?? target.dataset.researchKey ?? target.dataset.atlasLine;
   const activate = (key = "") => {
     document.documentElement.dataset.activeResearch = key;
     for (const target of targets) {
-      const targetKey = target.dataset.atlasKey ?? target.dataset.researchKey;
-      target.classList.toggle("is-active", Boolean(key) && targetKey === key);
-      target.classList.toggle("is-dimmed", Boolean(key) && targetKey !== key);
+      const matches = Boolean(key) && keyFor(target) === key;
+      target.classList.toggle("is-active", matches);
+      target.classList.toggle("is-dimmed", Boolean(key) && !matches);
     }
   };
 
-  for (const target of targets) {
-    const key = target.dataset.atlasKey ?? target.dataset.researchKey;
+  for (const target of targets.filter((item) => !item.dataset.atlasLine)) {
+    const key = keyFor(target);
     target.addEventListener("pointerenter", () => activate(key), { signal });
     target.addEventListener("pointerleave", () => activate(), { signal });
     target.addEventListener("focus", () => activate(key), { signal });
     target.addEventListener("blur", () => activate(), { signal });
+  }
+
+  for (const link of atlas.querySelectorAll("a[data-atlas-key]")) {
+    link.addEventListener("click", () => {
+      const target = byId(`research-${link.dataset.atlasKey}`);
+      requestAnimationFrame(() => target?.focus({ preventScroll: true }));
+    }, { signal });
   }
 
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -174,31 +187,64 @@ function bindSectionProgress() {
 function renderExperience(items) {
   const rows = items.map((item) => {
     const row = document.createElement("article");
-    row.className = "experience-row";
-    row.append(
-      textElement("p", "record-year", item.period),
-      textElement("h4", "", item.title),
+    row.className = `experience-row${item.kind === "exchange" ? " experience-row--exchange" : ""}`;
+    row.dataset.experienceKey = item.key;
+    if (item.nestedWithin) row.dataset.nestedWithin = item.nestedWithin;
+    const body = document.createElement("div");
+    body.append(
+      textElement("h3", "", item.title),
+      textElement("p", "experience-focus", item.focus),
     );
+    row.append(textElement("p", "record-year", item.period), body);
     return row;
   });
-  byId("experience-list").replaceChildren(...rows);
+  const roots = rows.filter((row) => !row.dataset.nestedWithin);
+  for (const row of rows.filter((item) => item.dataset.nestedWithin)) {
+    const parent = roots.find((item) => item.dataset.experienceKey === row.dataset.nestedWithin);
+    parent?.lastElementChild.append(row);
+  }
+  byId("experience-list").replaceChildren(...roots);
 }
 
-function renderPapers(items) {
-  const rows = items.map((paper) => {
+function updatePublicationToggle() {
+  const list = byId("paper-list");
+  const button = byId("publications-toggle");
+  list.classList.toggle("is-expanded", publicationsExpanded);
+  button.setAttribute("aria-expanded", String(publicationsExpanded));
+  const icon = textElement("span", "", publicationsExpanded ? "↑" : "↓");
+  icon.setAttribute("aria-hidden", "true");
+  button.replaceChildren(document.createTextNode(`${publicationsExpanded ? publicationLabels.collapse : publicationLabels.expand} `), icon);
+}
+
+function bindPublicationToggle() {
+  byId("publications-toggle").addEventListener("click", () => {
+    publicationsExpanded = !publicationsExpanded;
+    updatePublicationToggle();
+  });
+}
+
+function renderPapers(items, labels) {
+  publicationLabels = labels;
+  const rows = items.map((paper, index) => {
     const row = document.createElement("article");
-    row.className = "paper-row";
+    row.className = `paper-row${index >= 3 ? " paper-row--secondary" : ""}`;
     const body = document.createElement("div");
     body.className = "record-body";
     body.append(
-      textElement("h4", "", paper.title),
+      textElement("h3", "", paper.title),
       textElement("p", "", `${paper.authors} · ${paper.venue}`),
+      textElement("p", "record-contribution", paper.contribution),
       textElement("p", "record-topic", paper.topic),
     );
-    row.append(textElement("p", "record-year", paper.year), body, demoAction(paper.action));
+    row.append(
+      textElement("p", "record-year", paper.year),
+      body,
+      textElement("span", "paper-role", paper.role),
+    );
     return row;
   });
   byId("paper-list").replaceChildren(...rows);
+  updatePublicationToggle();
 }
 
 function renderProjects(items) {
@@ -207,7 +253,7 @@ function renderProjects(items) {
     entry.className = "project-entry";
     entry.append(
       textElement("p", "micro-label", project.category),
-      textElement("h4", "", project.title),
+      textElement("h3", "", project.title),
       textElement("p", "", project.description),
       demoAction(project.action),
     );
@@ -231,10 +277,8 @@ function applyLocale(locale, { persist = true } = {}) {
   setText("profile-department", page.profile.department);
   setText("profile-location", page.profile.location);
   setText("profile-bio", page.profile.bio);
-  setText("now-label", page.profile.nowLabel);
-  setText("now-text", page.profile.now);
+  setText("atlas-title", page.atlasTitle);
   byId("portrait").alt = page.profile.portraitAlt;
-  renderSimpleList("focus-list", page.profile.focus);
   renderContacts(page.contacts);
 
   for (const key of ["research", "experience", "papers", "projects", "interests"]) {
@@ -245,9 +289,10 @@ function applyLocale(locale, { persist = true } = {}) {
   renderAtlas(page.atlas);
   renderSectionProgress(page.navigation);
   renderExperience(page.experience);
-  renderPapers(page.papers);
+  renderPapers(page.papers, page.publicationsToggle);
   renderProjects(page.projects);
   renderSimpleList("interest-list", page.interests);
+  renderCollaboration(page.collaboration);
   setText("disclosure-label", page.disclosureLabel);
   setText("disclosure-text", page.disclosure);
   setText("footer-text", page.footer);
@@ -274,6 +319,7 @@ try {
 const initialLocale = detectLocale({ stored, browserLanguage: navigator.language });
 applyLocale(initialLocale, { persist: false });
 byId("year").textContent = String(new Date().getFullYear());
+bindPublicationToggle();
 bindRevealSections();
 bindSectionProgress();
 requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add("is-ready")));

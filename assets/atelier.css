@@ -1,0 +1,135 @@
+/* Scientific exhibition treatment, layered over the existing layout. */
+:root {
+  --paper: oklch(96% 0.013 86);
+  --surface: oklch(98% 0.009 86);
+  --graphite: oklch(29% 0.025 190);
+  --graphite-muted: oklch(48% 0.019 190);
+  --blue: oklch(43% 0.068 190);
+  --blue-deep: oklch(34% 0.059 190);
+  --hairline: oklch(85% 0.018 86);
+  --copper: oklch(75% 0.10 64);
+}
+
+main { padding-block-start: 2rem; }
+.profile-rail { background: oklch(94% 0.025 86); }
+.portrait { border-radius: 50% 50% 3px 3px; border: 1px solid var(--hairline); }
+.profile-rail h1 { letter-spacing: -0.065em; }
+.role { color: var(--blue); font-size: 0.64rem; letter-spacing: 0.14em; }
+.contact-links a { text-decoration: none; border-block-end: 1px solid var(--blue); }
+.section-progress a { border-radius: 2px; }
+.progress-number { opacity: 0.65; }
+.section-progress a[aria-current="true"] .progress-number { opacity: 1; }
+
+.indexed-section {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.65rem;
+  padding-block: 2.5rem 3.5rem;
+  border-block-start-color: var(--hairline);
+}
+#research { padding-block-start: 3.5rem; border-block-start-color: var(--graphite); }
+.section-key {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.section-key span { font-size: 0.75rem; font-weight: 500; }
+.section-key h2 { font-size: 1.1rem; letter-spacing: 0.035em; }
+.research-toolbar { inset-block-start: 0.7rem; }
+.research-atlas, .research-list, .publications-toggle { grid-column: 1 / -1; }
+
+.research-atlas {
+  min-height: 17rem;
+  border: 0;
+  background-color: oklch(27% 0.047 190);
+  background-image:
+    linear-gradient(oklch(85% 0.05 170 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(85% 0.05 170 / 0.055) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  box-shadow: 0 16px 28px -24px oklch(25% 0.04 190 / 0.65);
+}
+.research-atlas::before { display: none; }
+.research-atlas::after {
+  content: "+";
+  position: absolute;
+  right: 1rem;
+  top: 0.55rem;
+  color: var(--copper);
+  font-size: 1.2rem;
+  font-weight: 300;
+  pointer-events: none;
+}
+.atlas-connections line { stroke: oklch(80% 0.05 170 / 0.5); }
+.atlas-connections ellipse { stroke: oklch(80% 0.05 170 / 0.22); }
+.atlas-connections [data-atlas-line].is-active { stroke: var(--copper); stroke-width: 1.8; }
+.atlas-node, .atlas-node:hover, .atlas-node.is-active { color: oklch(96% 0.02 86); }
+.atlas-node:focus-visible { outline-color: var(--copper); }
+.atlas-label { font-weight: 500; letter-spacing: 0.12em; font-size: 0.67rem; }
+.atlas-dot {
+  background: var(--copper);
+  border-color: oklch(27% 0.047 190);
+  box-shadow: 0 0 0 0.3rem oklch(75% 0.10 64 / 0.12);
+}
+.atlas-node.is-active .atlas-dot { box-shadow: 0 0 0 0.65rem oklch(75% 0.10 64 / 0.2); }
+.atlas-contours {
+  fill: none;
+  stroke: oklch(78% 0.055 175 / 0.18);
+  stroke-width: 0.65;
+}
+.atlas-contours path { vector-effect: non-scaling-stroke; }
+.is-ready .atlas-connections line { animation: connection-draw 1.8s var(--ease-out) both; }
+@keyframes connection-draw {
+  from { stroke-dasharray: 150; stroke-dashoffset: 150; opacity: 0; }
+  to { stroke-dasharray: 150; stroke-dashoffset: 0; opacity: 1; }
+}
+
+.research-list { border: 0; column-gap: 2rem; }
+.research-feature { position: relative; padding: 1.4rem 0; }
+.research-feature + .research-feature { border-inline-start: 0; }
+.research-feature:nth-child(n + 3) { border-block-start: 1px solid var(--hairline); }
+.research-index { position: absolute; right: 0; top: 1.3rem; font-weight: 400; opacity: 0.5; }
+.research-feature .micro-label { padding-inline-end: 2rem; font-size: 0.65rem; letter-spacing: 0.1em; }
+.research-feature h3 { font-size: 1.05rem; max-width: 36ch; margin-block: 0.65rem; }
+.research-feature.is-active { background: transparent; transform: none; }
+.research-feature.is-active h3 { color: var(--blue); }
+.research-question { font-size: 0.76rem; }
+.research-feature.is-active .research-index { opacity: 1; }
+.experience-timeline { padding-inline-start: 0.4rem; border-block-end: 0; }
+.experience-timeline .experience-row { grid-template-columns: 7rem minmax(0, 1fr); padding-block-end: 1.8rem; }
+.experience-timeline .experience-row--exchange { display: block; padding-block-end: 0; }
+.experience-row h3 { font-size: 1rem; }
+.experience-row--exchange h3 { font-size: 0.85rem; }
+.paper-row { padding-block: 1.35rem; }
+.record-body h3 { font-size: 1.08rem; max-width: 65ch; }
+.record-body .record-topic { font-size: 0.71rem; letter-spacing: 0.025em; }
+.paper-role { letter-spacing: 0.05em; }
+.publications-toggle { margin: 0; border-block-end: 1px solid var(--blue); }
+.project-entry { position: relative; }
+.project-entry h3 { font-size: 1.15rem; }
+.project-entry .micro-label { margin-block-end: 0.8rem; font-size: 0.65rem; }
+.project-entry:hover { background: transparent; }
+.project-entry:hover h3 { transform: translateX(3px); }
+.project-entry h3 { transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
+.interest-list { padding-block-start: 0; }
+.interest-list li { background: transparent; border: 0; padding: 0.5rem 1.25rem 0.5rem 0; font-size: 0.85rem; }
+.interest-list li + li::before { content: "·"; margin-inline-end: 1.25rem; color: var(--blue); }
+.collaboration { padding-block: 2rem; }
+.collaboration h2 { max-width: 28ch; font-size: clamp(1.5rem, 2.5vw, 2rem); }
+
+@media (min-width: 70rem) {
+  main { padding-inline: clamp(2.5rem, 5vw, 5rem); }
+  .profile-inner { padding-inline: 1.5rem; }
+  .section-progress a { padding-inline: 0.55rem; margin-inline: -0.55rem; }
+  .section-progress a[aria-current="true"] { background: oklch(43% 0.068 190 / 0.08); }
+}
+@media (max-width: 47.999rem) {
+  .research-atlas { min-height: 13rem; }
+  .atlas-label { font-size: 0.57rem; letter-spacing: 0.06em; }
+  .research-feature + .research-feature { border-block-start: 1px solid var(--hairline); }
+  .experience-timeline .experience-row { grid-template-columns: minmax(0, 1fr); }
+  .indexed-section { padding-block-end: 2.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-ready .atlas-connections line { animation: none; }
+  .project-entry:hover h3 { transform: none; }
+}

@@ -80,7 +80,7 @@ export const content = {
       { key: "yale", period: "2024—Present", title: "PhD Researcher in Computer Science, Yale University", focus: "Learning systems, reasoning, and interdisciplinary theory" },
       { key: "melbourne", period: "2022—2024", title: "M.S. in Computer Science, University of Melbourne", focus: "Machine learning systems and quantitative methods" },
       { key: "berkeley", period: "2020—2021", title: "Visiting Student in High-Energy Physics, UC Berkeley", focus: "Quantum field theory and high-energy physics", kind: "exchange", nestedWithin: "nyu-shanghai" },
-      { key: "nyu-shanghai", period: "2018—2022", title: "B.S. in Information Technology & Physics, NYU Shanghai", focus: "A dual foundation in computation and theoretical physics" },
+      { key: "nyu-shanghai", period: "2019—2022", title: "B.S. in Information Technology & Physics, NYU Shanghai", focus: "A dual foundation in computation and theoretical physics" },
     ],
     papers: paperRecords.map((paper, index) => ({
       ...paper,
@@ -169,7 +169,7 @@ export const content = {
       { key: "yale", period: "2024—至今", title: "耶鲁大学计算机科学博士研究生", focus: "学习系统、推理与跨学科理论" },
       { key: "melbourne", period: "2022—2024", title: "墨尔本大学计算机科学硕士", focus: "机器学习系统与量化方法" },
       { key: "berkeley", period: "2020—2021", title: "加州大学伯克利分校高能物理交换生", focus: "量子场论与高能物理", kind: "exchange", nestedWithin: "nyu-shanghai" },
-      { key: "nyu-shanghai", period: "2018—2022", title: "上海纽约大学信息技术与物理学双学位", focus: "计算与理论物理的双重基础" },
+      { key: "nyu-shanghai", period: "2019—2022", title: "上海纽约大学信息技术与物理学双学位", focus: "计算与理论物理的双重基础" },
     ],
     papers: paperRecords.map((paper, index) => ({
       ...paper,

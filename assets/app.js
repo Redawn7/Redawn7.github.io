@@ -1,4 +1,4 @@
-import { content } from "./content.js?v=20260904-1";
+import { content } from "./content.js?v=20260908-1";
 import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260902-1";
 
 const byId = (id) => document.getElementById(id);

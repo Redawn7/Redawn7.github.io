@@ -9,7 +9,7 @@
 - **2024—Present:** PhD Researcher in Computer Science, Yale University｜耶鲁大学计算机科学博士研究生
 - **2022—2024:** M.S. in Computer Science, University of Melbourne｜墨尔本大学计算机科学硕士
 - **2020—2021:** Visiting Student in High-Energy Physics, UC Berkeley｜加州大学伯克利分校高能物理交换生
-- **2018—2022:** B.S. in Information Technology & Physics, NYU Shanghai｜上海纽约大学信息技术与物理学双学位
+- **2019—2022:** B.S. in Information Technology & Physics, NYU Shanghai｜上海纽约大学信息技术与物理学双学位
 
 ## Research Directions
 

@@ -19,8 +19,8 @@ test("Chinese and English content expose the same complete shape", () => {
     for (const key of requiredProfile) assert.ok(page.profile[key], `${locale}.profile.${key}`);
     assert.ok(page.atlasTitle, `${locale}.atlasTitle`);
     assert.equal(page.atlas.length, 4, `${locale}.atlas`);
-    assert.equal(page.navigation.length, 5, `${locale}.navigation`);
-    for (const key of ["research", "experience", "papers", "projects", "interests"]) {
+    assert.equal(page.navigation.length, 6, `${locale}.navigation`);
+    for (const key of ["research", "experience", "papers", "projects", "honors", "interests"]) {
       assert.ok(page.sections[key].title, `${locale}.sections.${key}.title`);
       assert.ok(page.sections[key].number, `${locale}.sections.${key}.number`);
     }
@@ -34,6 +34,7 @@ test("Chinese and English content expose the same complete shape", () => {
     assert.ok(page.collaboration.description);
     assert.equal(page.collaboration.links.length, 2);
     assert.equal(page.projects.length, 4);
+    assert.equal(page.honors.length, 4);
     assert.ok(page.interests.length >= 4);
     assert.ok(page.disclosure.length > 40);
   }

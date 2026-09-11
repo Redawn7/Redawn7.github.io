@@ -33,7 +33,8 @@ mkdirSync(output, { recursive: true });
     await page.locator('#publications-toggle').click();
     if ((await page.locator("#project-list .project-entry").count()) !== 4) throw new Error(`${name}: wrong project count`);
     if ((await page.locator("[data-demo-action]").count()) !== 4) throw new Error(`${name}: unsafe demo actions`);
-    if (!(await page.locator("#demo-disclosure").isVisible())) throw new Error(`${name}: disclosure hidden`);
+    if ((await page.locator('#honor-list .honor-row').count()) !== 4) throw new Error(`${name}: honors missing`);
+    if ((await page.locator('#demo-disclosure').count()) !== 0) throw new Error(`${name}: old notice still present`);
     if (!(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth))) throw new Error(`${name}: horizontal overflow`);
 
     if (name === "desktop") {
@@ -76,7 +77,7 @@ mkdirSync(output, { recursive: true });
   await fallback.goto("http://127.0.0.1:64058/", { waitUntil: "networkidle" });
   if ((await fallback.locator("#research-list .research-feature").count()) !== 4) throw new Error("no-JavaScript fallback lost research directions");
   if ((await fallback.locator("#paper-list .paper-row").count()) !== 6) throw new Error("no-JavaScript fallback lost papers");
-  if (!(await fallback.locator("#demo-disclosure").isVisible())) throw new Error("no-JavaScript fallback lost disclosure");
+  if ((await fallback.locator('#honor-list .honor-row').count()) !== 4) throw new Error('no-JavaScript fallback lost honors');
   await fallback.close();
 
   const accessibility = await browser.newPage({ viewport: { width: 720, height: 900 } });

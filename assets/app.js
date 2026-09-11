@@ -1,4 +1,4 @@
-import { content } from "./content.js?v=20260908-1";
+import { content } from "./content.js?v=20260911-1";
 import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260902-1";
 
 const byId = (id) => document.getElementById(id);
@@ -252,7 +252,7 @@ function renderProjects(items) {
     const entry = document.createElement("article");
     entry.className = "project-entry";
     entry.append(
-      textElement("p", "micro-label", project.category),
+      textElement("p", "micro-label", `${project.category} · ${project.period}`),
       textElement("h3", "", project.title),
       textElement("p", "", project.description),
       demoAction(project.action),
@@ -260,6 +260,17 @@ function renderProjects(items) {
     return entry;
   });
   byId("project-list").replaceChildren(...projects);
+}
+
+function renderHonors(items) {
+  byId("honor-list").replaceChildren(...items.map((item) => {
+    const row = document.createElement("article");
+    row.className = "honor-row";
+    const body = document.createElement("div");
+    body.append(textElement("h3", "", item.title), textElement("p", "", item.detail));
+    row.append(textElement("p", "record-year", item.year), body);
+    return row;
+  }));
 }
 
 function applyLocale(locale, { persist = true } = {}) {
@@ -281,7 +292,7 @@ function applyLocale(locale, { persist = true } = {}) {
   byId("portrait").alt = page.profile.portraitAlt;
   renderContacts(page.contacts);
 
-  for (const key of ["research", "experience", "papers", "projects", "interests"]) {
+  for (const key of ["research", "experience", "papers", "projects", "honors", "interests"]) {
     setText(`${key}-number`, page.sections[key].number);
     setText(`${key}-section-title`, page.sections[key].title);
   }
@@ -291,10 +302,9 @@ function applyLocale(locale, { persist = true } = {}) {
   renderExperience(page.experience);
   renderPapers(page.papers, page.publicationsToggle);
   renderProjects(page.projects);
+  renderHonors(page.honors);
   renderSimpleList("interest-list", page.interests);
   renderCollaboration(page.collaboration);
-  setText("disclosure-label", page.disclosureLabel);
-  setText("disclosure-text", page.disclosure);
   setText("footer-text", page.footer);
   bindResearchAtlas();
 

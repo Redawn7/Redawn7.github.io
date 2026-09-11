@@ -11,6 +11,24 @@
 - **2020—2021:** Visiting Student in High-Energy Physics, UC Berkeley｜加州大学伯克利分校高能物理交换生
 - **2019—2022:** B.S. in Information Technology & Physics, NYU Shanghai｜上海纽约大学信息技术与物理学双学位
 
+## Work & Projects（2026-09-09 更新，均为虚构经历）
+
+以下均为虚构人物的创作设定。Google DeepMind、Citadel Securities 和墨尔本大学仅作为故事背景，不表示真实任职、合作或背书；Tracefield AI 为本原型设定的虚构创业项目。中英文完整网页文案维护在 `assets/content.js`。
+
+- **2025.06–2025.09 · Research Intern · Google DeepMind：** 自适应推理、Best-of-N、验证器引导搜索及停止策略；交付可复现评测工具和消融报告。
+- **2024.01–2024.06 · Quantitative Research Intern · Citadel Securities：** 订单流与队列动态特征，结合成本和滚动样本外验证的事件驱动回测。
+- **2023–至今 · Founder & Product Engineer · Tracefield AI：** AI 科研工作台创业原型，负责产品、全栈工程、证据检索评测和发布流程。
+- **2022.09–2023.08 · Research Assistant · University of Melbourne｜墨尔本大学科研助理：** 图学习与量子信息研究，交付模拟数据、几何重建基线和实验工具。
+
+## Honors & Awards（2026-09-11，虚拟人设素材）
+
+- 2025：优秀科研海报奖，研究生学术研讨会；自适应计算与语言模型推理。
+- 2024：硕士研究卓越奖，墨尔本大学；机器学习与科学计算。
+- 2023：最强大脑第十季全国八强（用户指定的人设内容）。
+- 2022：本科生杰出研究荣誉，上海纽约大学；计算与物理跨学科研究。
+
+以上为创作设定，未核验真实获奖记录或奖项官方名称。用户要求移除网页页尾 Demo notice，之后由用户自行补充说明。
+
 ## Research Directions
 
 ### 1. LLM Scaling Laws｜大语言模型尺度定律

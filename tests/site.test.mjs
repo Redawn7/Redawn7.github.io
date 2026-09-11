@@ -26,11 +26,11 @@ test("document contains the complete semantic personal homepage", async () => {
     assert.match(html, new RegExp(`id="research-${key}"`));
   }
   assert.match(html, /class="section-progress"/);
-  assert.equal((html.match(/data-section-target=/g) ?? []).length, 5);
-  for (const id of ["research", "experience", "papers", "projects", "interests", "demo-disclosure"]) {
+  assert.equal((html.match(/data-section-target=/g) ?? []).length, 6);
+  for (const id of ["research", "experience", "papers", "projects", "honors", "interests"]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
-  assert.equal((html.match(/<h2 id="[^"]+-section-title"/g) ?? []).length, 5);
+  assert.equal((html.match(/<h2 id="[^"]+-section-title"/g) ?? []).length, 6);
   assert.doesNotMatch(html, /<h3 id="[^"]+-section-title"/);
   assert.match(html, /class="experience-list experience-timeline"/);
   assert.match(html, /experience-row--exchange/);
@@ -38,7 +38,7 @@ test("document contains the complete semantic personal homepage", async () => {
   assert.match(html, /aria-expanded="false"/);
   assert.match(html, /id="collaboration"/);
   assert.doesNotMatch(html, /aria-disabled="true">(?:Email|CV)/);
-  assert.match(html, /fictional placeholders/i);
+  assert.doesNotMatch(html, /id="demo-disclosure"/);
 });
 
 test("runtime assets are local and dependency-free", async () => {

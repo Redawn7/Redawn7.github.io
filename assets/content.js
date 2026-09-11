@@ -13,10 +13,10 @@ const paperRecords = [
 ];
 
 const projectRecords = [
-  { title: "Creator Evidence Wiki", href: null, demo: true },
-  { title: "PaperLens", href: null, demo: true },
-  { title: "AgentScope", href: null, demo: true },
-  { title: "Small Models, Clear Reasons", href: null, demo: true },
+  { period: "2025.06–2025.09", href: null, demo: true },
+  { period: "2024.01–2024.06", href: null, demo: true },
+  { period: "2023–Present", href: null, demo: true },
+  { period: "2022.09–2023.08", href: null, demo: true },
 ];
 
 const englishContacts = [
@@ -49,7 +49,8 @@ export const content = {
       { target: "research", label: "Research Atlas" },
       { target: "experience", label: "Experience" },
       { target: "papers", label: "Selected Papers" },
-      { target: "projects", label: "Projects" },
+      { target: "projects", label: "Work & Projects" },
+      { target: "honors", label: "Honors & Awards" },
       { target: "interests", label: "Beyond Work" },
     ],
     profile: {
@@ -67,8 +68,9 @@ export const content = {
       research: { number: "01", title: "Research" },
       experience: { number: "02", title: "Experience" },
       papers: { number: "03", title: "Selected Papers" },
-      projects: { number: "04", title: "Projects" },
-      interests: { number: "05", title: "Beyond Work" },
+      projects: { number: "04", title: "Work & Projects" },
+      honors: { number: "05", title: "Honors & Awards" },
+      interests: { number: "06", title: "Beyond Work" },
     },
     research: [
       { key: "llm-scaling", kicker: "LLM Scaling Laws", title: "Predictive scaling frameworks for large language models", description: "Performance scaling across parameters, data, and compute, with an emphasis on compute-optimal training, data-parameter allocation, and emergent capabilities.", question: "Can small training runs reliably forecast the limits of much larger models?" },
@@ -99,15 +101,22 @@ export const content = {
     publicationsToggle: { expand: "View all 6 publications", collapse: "Show selected publications" },
     projects: projectRecords.map((project, index) => ({
       ...project,
-      category: ["AI Product", "Research Tool", "Open Source", "Experiment"][index],
+      category: ["Research Internship", "Quantitative Internship", "Independent Venture", "Research Engineering"][index],
+      title: ["Research Intern · Google DeepMind", "Quantitative Research Intern · Citadel Securities", "Founder & Product Engineer · Tracefield AI", "Research Assistant · University of Melbourne"][index],
       description: [
-        "A local-first workspace that turns creator videos into timestamped, traceable knowledge.",
-        "An evidence-aware reading environment for comparing claims, methods, and citations across papers.",
-        "A lightweight evaluation toolkit for inspecting how research agents plan, retrieve, and justify decisions.",
-        "Notes and prototypes exploring compact models, transparent interfaces, and human-in-the-loop AI.",
+        "Prototyped adaptive test-time computation for mathematical and multi-step reasoning. Implemented Best-of-N sampling, verifier-guided search, and uncertainty-based stopping; evaluated accuracy, token budgets, and latency against fixed-compute baselines. Delivered a reproducible evaluation harness and an ablation report on when extra reasoning helps.",
+        "Investigated short-horizon price impact and liquidity shifts using limit-order-book data. Engineered order-flow imbalance and queue-dynamics features, then evaluated signals with event-driven backtests, transaction costs, and walk-forward validation. Delivered a research pipeline separating predictive signal from execution assumptions.",
+        "Founded a fictional AI research-workspace venture, taking the product from concept to an end-to-end prototype. Designed timestamped video retrieval, evidence-linked summaries, and a local-first knowledge interface. Owned product discovery, full-stack engineering, retrieval evaluation, and the prototype release process.",
+        "Worked on a research prototype connecting graph learning with quantum-information representations during postgraduate study. Built simulation datasets, graph-based geometry-reconstruction baselines, and controlled experiments across system sizes. Delivered reusable experiment tooling and technical notes on model behavior and physical constraints.",
       ][index],
-      action: "Demo project",
+      action: "Fictional experience",
     })),
+    honors: [
+      { year: "2025", title: "Outstanding Research Poster", detail: "Graduate Research Symposium · Adaptive computation and language-model reasoning" },
+      { year: "2024", title: "Excellence in Master's Research", detail: "University of Melbourne · Machine learning and scientific computing" },
+      { year: "2023", title: "National Top 8 · The Brain, Season 10", detail: "Jiangsu TV · National competition" },
+      { year: "2022", title: "Undergraduate Research Distinction", detail: "NYU Shanghai · Interdisciplinary research in computing and physics" },
+    ],
     interests: ["Photography", "Long walks", "Reading", "Independent building", "Coffee & conversations"],
     collaboration: {
       eyebrow: "Open thread",
@@ -138,7 +147,8 @@ export const content = {
       { target: "research", label: "研究图谱" },
       { target: "experience", label: "个人履历" },
       { target: "papers", label: "精选论文" },
-      { target: "projects", label: "开发项目" },
+      { target: "projects", label: "工作与项目" },
+      { target: "honors", label: "奖项与荣誉" },
       { target: "interests", label: "工作之外" },
     ],
     profile: {
@@ -156,8 +166,9 @@ export const content = {
       research: { number: "01", title: "研究方向" },
       experience: { number: "02", title: "个人履历" },
       papers: { number: "03", title: "精选论文" },
-      projects: { number: "04", title: "开发项目" },
-      interests: { number: "05", title: "工作之外" },
+      projects: { number: "04", title: "工作与项目" },
+      honors: { number: "05", title: "奖项与荣誉" },
+      interests: { number: "06", title: "工作之外" },
     },
     research: [
       { key: "llm-scaling", kicker: "大语言模型尺度定律", title: "面向大语言模型的可预测尺度框架", description: "研究性能随参数、数据与计算预算增长的规律，关注 compute-optimal training、数据—参数配置与能力涌现。", question: "能否用小规模训练实验可靠预测更大模型的能力边界？" },
@@ -188,15 +199,23 @@ export const content = {
     publicationsToggle: { expand: "查看全部 6 篇论文", collapse: "收起至精选论文" },
     projects: projectRecords.map((project, index) => ({
       ...project,
-      category: ["AI 产品", "科研工具", "开源项目", "个人实验"][index],
+      category: ["研究实习", "量化实习", "独立创业", "科研工程"][index],
+      title: ["研究实习生 · Google DeepMind", "量化研究实习生 · Citadel Securities", "创始人兼产品工程师 · Tracefield AI", "科研助理 · 墨尔本大学"][index],
+      period: project.period.replace("Present", "至今"),
       description: [
-        "一个本地优先的创作者知识工作台，将视频转化为带时间戳、可追溯的知识内容。",
-        "一个具备证据意识的论文阅读环境，用于比较不同论文的主张、方法与引用关系。",
-        "一个轻量评测工具，用于观察科研智能体如何规划、检索并解释自己的决策。",
-        "围绕小模型、透明界面与人在回路人工智能进行的笔记和原型实验。",
+        "围绕数学与多步推理任务开发自适应测试时计算原型，实现 Best-of-N 采样、验证器引导搜索及基于不确定性的停止策略。与固定预算基线比较准确率、Token 消耗和延迟，交付可复现评测工具及分析额外推理何时有效的消融实验报告。",
+        "利用限价订单簿数据研究短周期价格冲击与流动性变化。构建订单流不平衡和队列动态特征，结合事件驱动回测、交易成本及滚动样本外验证评估信号，交付区分预测能力与交易执行假设的研究流程。",
+        "创立虚构 AI 科研工作台项目 Tracefield AI，主导从产品构想到端到端原型的开发。设计视频时间戳检索、证据关联摘要和本地优先知识界面，负责需求探索、全栈工程、检索评测与原型发布流程。",
+        "硕士期间参与连接图学习与量子信息表示的研究原型。构建模拟数据集、基于图的几何重建基线及跨系统规模的对照实验，交付可复用实验工具和关于模型行为、物理约束的技术笔记。",
       ][index],
-      action: "演示项目",
+      action: "虚构经历",
     })),
+    honors: [
+      { year: "2025", title: "优秀科研海报奖", detail: "研究生学术研讨会 · 自适应计算与大语言模型推理" },
+      { year: "2024", title: "硕士研究卓越奖", detail: "墨尔本大学 · 机器学习与科学计算" },
+      { year: "2023", title: "最强大脑第十季全国八强", detail: "江苏卫视 · 全国竞赛" },
+      { year: "2022", title: "本科生杰出研究荣誉", detail: "上海纽约大学 · 计算与物理跨学科研究" },
+    ],
     interests: ["摄影", "散步", "阅读", "独立开发", "咖啡与交流"],
     collaboration: {
       eyebrow: "开放讨论",

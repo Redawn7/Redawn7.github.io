@@ -1,4 +1,4 @@
-import { content } from "./content.js?v=20260911-1";
+import { content } from "./content.js?v=20261022-1";
 import { STORAGE_KEY, detectLocale, persistLocale } from "./locale.js?v=20260902-1";
 
 const byId = (id) => document.getElementById(id);
@@ -49,14 +49,13 @@ function demoAction(label) {
 }
 
 function renderResearch(items) {
-  const entries = items.map((direction, index) => {
+  const entries = items.map((direction) => {
     const entry = document.createElement("article");
     entry.id = `research-${direction.key}`;
     entry.className = "research-feature";
     entry.dataset.researchKey = direction.key;
     entry.tabIndex = -1;
     entry.append(
-      textElement("p", "research-index", String(index + 1).padStart(2, "0")),
       textElement("p", "micro-label", direction.kicker),
       textElement("h3", "", direction.title),
       textElement("p", "research-description", direction.description),
@@ -85,13 +84,12 @@ function renderAtlas(items) {
 
 function renderSectionProgress(items) {
   const currentTarget = document.querySelector("[data-section-target][aria-current='true']")?.dataset.sectionTarget ?? "research";
-  const links = items.map((item, index) => {
+  const links = items.map((item) => {
     const link = document.createElement("a");
     link.href = `#${item.target}`;
     link.dataset.sectionTarget = item.target;
     if (item.target === currentTarget) link.setAttribute("aria-current", "true");
     link.append(
-      textElement("span", "progress-number", String(index + 1).padStart(2, "0")),
       textElement("span", "progress-label", item.label),
     );
     return link;
@@ -130,17 +128,6 @@ function bindResearchAtlas() {
     }, { signal });
   }
 
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    let frame = 0;
-    atlas.addEventListener("pointermove", (event) => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const bounds = atlas.getBoundingClientRect();
-        atlas.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
-        atlas.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
-      });
-    }, { signal });
-  }
 }
 
 function bindRevealSections() {
@@ -293,7 +280,6 @@ function applyLocale(locale, { persist = true } = {}) {
   renderContacts(page.contacts);
 
   for (const key of ["research", "experience", "papers", "projects", "honors", "interests"]) {
-    setText(`${key}-number`, page.sections[key].number);
     setText(`${key}-section-title`, page.sections[key].title);
   }
   renderResearch(page.research);

@@ -117,7 +117,7 @@ export const content = {
       { year: "2023", title: "National Top 8 · The Brain, Season 10", detail: "Jiangsu TV · National competition" },
       { year: "2022", title: "Undergraduate Research Distinction", detail: "NYU Shanghai · Interdisciplinary research in computing and physics" },
     ],
-    interests: ["Photography", "Long walks", "Reading", "Independent building", "Coffee & conversations"],
+    interests: ["coffee ☕", "tennis 🎾", "snowboarding 🏂", "staycations 🏖️", "sake 🍶", "long walks 🚶", "unfinished thoughts 💭"],
     collaboration: {
       eyebrow: "Open thread",
       title: "Let unlikely ideas share a table.",
@@ -216,7 +216,7 @@ export const content = {
       { year: "2023", title: "最强大脑第十季全国八强", detail: "江苏卫视 · 全国竞赛" },
       { year: "2022", title: "本科生杰出研究荣誉", detail: "上海纽约大学 · 计算与物理跨学科研究" },
     ],
-    interests: ["摄影", "散步", "阅读", "独立开发", "咖啡与交流"],
+    interests: ["coffee ☕", "tennis 🎾", "snowboarding 🏂", "staycations 🏖️", "sake 🍶", "long walks 🚶", "unfinished thoughts 💭"],
     collaboration: {
       eyebrow: "开放讨论",
       title: "让看似无关的思想坐在同一张桌上。",

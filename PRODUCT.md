@@ -1,5 +1,9 @@
 # Product
 
+## Current Visual Direction (2026-10-22)
+
+Visitors browse a focused academic portfolio on a laptop or phone in daylight. Combine Apple's visual clarity with a compact academic index: pure white reading surfaces, a neutral cool-gray identity rail, graphite text, native Apple system typography, and restrained blue links. Retain the fixed identity rail and bilingual content. Use upright type, generous space between sections, and tightly grouped records. Controls are rectangular. Do not use dark or cream backgrounds, italic headline emphasis, section numerals, monospace labels, pill buttons, or large gradient compositions. Motion is limited to brief opacity and color feedback.
+
 ## Register
 
 brand
